@@ -5,6 +5,9 @@ class Averager {
   }
 
   put (value) {
+    if(this.data.length === this.size) {
+      this.data.shift();
+    }
     this.data.push(Number(value))
   } 
 
