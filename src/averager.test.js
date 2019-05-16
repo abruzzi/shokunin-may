@@ -6,7 +6,7 @@ describe('averager', () => {
     averager.put({
       temperature: 2,
       humidity: 2,
-      photo: 2,
+      light: 2,
       radiation: 2
     });
 
@@ -15,7 +15,7 @@ describe('averager', () => {
     expect(result).toEqual({
       temperature: 2,
       humidity: 2,
-      photo: 2,
+      light: 2,
       radiation: 2
     });
   });
@@ -26,14 +26,14 @@ describe('averager', () => {
     averager.put({
       temperature: 2,
       humidity: 2,
-      photo: 2,
+      light: 2,
       radiation: 2
     });
     
     averager.put({
       temperature: 4,
       humidity: 4,
-      photo: 4,
+      light: 4,
       radiation: 4
     });
     
@@ -42,7 +42,7 @@ describe('averager', () => {
     expect(result).toEqual({
       temperature: 3,
       humidity: 3,
-      photo: 3,
+      light: 3,
       radiation: 3
     });
   });
@@ -53,21 +53,21 @@ describe('averager', () => {
     averager.put({
       temperature: 2,
       humidity: 2,
-      photo: 2,
+      light: 2,
       radiation: 2
     });
 
     averager.put({
       temperature: 4,
       humidity: 4,
-      photo: 4,
+      light: 4,
       radiation: 4
     });
 
     averager.put({
       temperature: 4,
       humidity: 4,
-      photo: 4,
+      light: 4,
       radiation: 4
     });
     
@@ -76,7 +76,7 @@ describe('averager', () => {
     expect(result).toEqual({
       temperature: 4,
       humidity: 4,
-      photo: 4,
+      light: 4,
       radiation: 4
     });
   });

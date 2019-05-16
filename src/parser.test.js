@@ -36,7 +36,7 @@ describe('parser', () => {
       readings: {
         temperature: 23.22,
         humidity: 76.9735,
-        photo: 766.49,
+        light: 766.49,
         radiation: 197
       }
     }))

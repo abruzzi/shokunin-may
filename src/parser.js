@@ -13,7 +13,7 @@ const parse = (data) => {
     readings: {
       temperature: Number(data.ambient_temperature),
       humidity: Number(data.humidity),
-      photo: Number(data.photosensor),
+      light: Number(data.photosensor),
       radiation: Number(data.radiation_level)
     }
   };

@@ -20,6 +20,7 @@ pubnub.addListener({
     THE_MAP[parsed.groupName].put(parsed.readings);
     console.log({
       group: parsed.groupName,
+      timestamp: parsed.timestamp,
       average: THE_MAP[parsed.groupName].average()
     });
   }

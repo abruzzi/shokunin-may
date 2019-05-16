@@ -15,14 +15,14 @@ class Averager {
     const sum = this.data.reduce((previous, current) => ({
       temperature: previous.temperature + current.temperature,
       humidity: previous.humidity + current.humidity,
-      photo: previous.photo + current.photo,
+      light: previous.light + current.light,
       radiation: previous.radiation + current.radiation
     }));
   
     return {
       temperature: sum.temperature / this.data.length,
       humidity: sum.humidity / this.data.length,
-      photo: sum.photo / this.data.length,
+      light: sum.light / this.data.length,
       radiation: sum.radiation / this.data.length
     }
   }
