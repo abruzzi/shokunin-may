@@ -12,6 +12,6 @@ describe('parser', () => {
     }
 
     const parsed = parse(data);
-    expect(parsed.groupId).toEqual('group_10');
+    expect(parsed.group_name).toEqual('group_10');
   })
 })
