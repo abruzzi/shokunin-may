@@ -1,0 +1,68 @@
+[
+    {
+      "group_name": "group_0",
+      "sensor_uuid_starts_with": "probe-0",
+      "latitude": -16.876261,
+      "longitude": 145.753509
+    },
+    {
+      "group_name": "group_1",
+      "sensor_uuid_starts_with": "probe-1",
+      "latitude": -33.866239,
+      "longitude": 151.206597
+    },
+    {
+      "group_name": "group_2",
+      "sensor_uuid_starts_with": "probe-2",
+      "latitude": -12.4666,
+      "longitude": 130.846727
+    },
+    {
+      "group_name": "group_3",
+      "sensor_uuid_starts_with": "probe-3",
+      "latitude": -33.85649,
+      "longitude": 151.215307
+    },
+    {
+      "group_name": "group_4",
+      "sensor_uuid_starts_with": "probe-4",
+      "latitude": -37.81631,
+      "longitude": 144.963862
+    },
+    {
+      "group_name": "group_5",
+      "sensor_uuid_starts_with": "probe-5",
+      "latitude": -37.811645,
+      "longitude": 144.937466
+    },
+    {
+      "group_name": "group_6",
+      "sensor_uuid_starts_with": "probe-6",
+      "latitude": -27.465731,
+      "longitude": 153.027659
+    },
+    {
+      "group_name": "group_7",
+      "sensor_uuid_starts_with": "probe-7",
+      "latitude": -28.006011,
+      "longitude": 153.429668
+    },
+    {
+      "group_name": "group_8",
+      "sensor_uuid_starts_with": "probe-8",
+      "latitude": -35.307217,
+      "longitude": 149.123062
+    },
+    {
+      "group_name": "group_9",
+      "sensor_uuid_starts_with": "probe-9",
+      "latitude": -34.914081,
+      "longitude": 138.604649
+    },
+    {
+      "group_name": "group_10",
+      "sensor_uuid_starts_with": "probe-[a-zA-Z]",
+      "latitude": -31.95866,
+      "longitude": 115.858317
+    }
+  ]
