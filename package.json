@@ -33,6 +33,7 @@
     "pubnub-react": "^1.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "rickshaw": "^1.6.6",
     "styled-components": "^4.2.0"
   }
 }
