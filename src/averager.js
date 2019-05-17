@@ -17,7 +17,7 @@ class Averager {
       humidity: previous.humidity + current.humidity,
       light: previous.light + current.light,
       radiation: previous.radiation + current.radiation
-    }));
+    }), {temperature: 0, humidity: 0, light: 0, radiation: 0});
   
     return {
       temperature: sum.temperature / this.data.length,
