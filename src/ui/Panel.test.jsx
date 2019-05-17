@@ -37,5 +37,16 @@ describe('Panel', () => {
     const wrapper = shallow(<Panel {...props} />);
 
     expect(wrapper.find('.temperature').text()).toEqual('Temperature: -');
-  })
+  });
+
+  it('shows group name', () => {
+    const props = {
+      group: 'Group 1',
+      temperature: 1,
+    };
+
+    const wrapper = shallow(<Panel {...props} />);
+
+    expect(wrapper.find('p').text()).toEqual('Group 1');
+  });
 });

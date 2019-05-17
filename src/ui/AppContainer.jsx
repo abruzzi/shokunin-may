@@ -25,7 +25,7 @@ class AppContainer extends Component {
 
   componentWillMount() {
     this.pubnub.subscribe({ channels: ['pubnub-sensor-network'] });
-    this.pubnub.getMessage('pubnub-sensor-network', 1);
+    this.pubnub.getMessage('pubnub-sensor-network', 10);
   }
 
   componentWillUnmount() {
@@ -33,15 +33,17 @@ class AppContainer extends Component {
   }
 
   render() {
-    const message = this.pubnub.getMessage('pubnub-sensor-network');
-    if(message.length === 0) return null;
+    const messages = this.pubnub.getMessage('pubnub-sensor-network');
+    if(messages.length === 0) return null;
 
-    const parsed = parse(message[0].message);
-    THE_MAP.find(x => x.group === parsed.groupName).averager.put(parsed.readings);
+    messages.forEach(message => {
+      const parsed = parse(message.message);
+      THE_MAP.find(current => current.group === parsed.groupName).averager.put(parsed.readings);
+    });
 
     return <Container>
       {THE_MAP.map(value => {
-        return <Panel key={value.group} {...value.averager.average()} />
+        return <Panel key={value.group} group={value.group} {...value.averager.average()} />
       })}
     </Container>
   }

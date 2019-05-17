@@ -25,6 +25,7 @@ const Labels = [
 ];
 
 const Panel = (props) => (<Container>
+  <p>{props.group}</p>
   {Labels.map(label => {
     return figure(label, props[label.toLowerCase()])
   })}
