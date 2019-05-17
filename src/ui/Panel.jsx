@@ -7,18 +7,19 @@ const Container = styled.div`
 
 Container.displayName = 'Container';
 
+const format = (figure) => isNaN(Number(figure)) ? '-' : Number(figure).toFixed(2);
 const Panel = ({ 
     temperature = 0,
     humidity = 0,
     light = 0,
     radiation = 0
-}) => (<div>
+}) => (<Container>
     <p>
-      <span className="temperature">{temperature}</span>
-      <span className="humidity">{humidity}</span>
-      <span className="light">{light}</span>
-      <span className="radiation">{radiation}</span>
+      <span className="temperature">Temperature: {format(temperature)}</span>
+      <span className="humidity">Humidity: {format(humidity)}</span>
+      <span className="light">Light: {format(light)}</span>
+      <span className="radiation">Radiation: {format(radiation)}</span>
     </p>
-</div>);
+</Container>);
 
 export default Panel;
