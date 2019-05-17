@@ -29,6 +29,7 @@
     ]
   },
   "dependencies": {
+    "antd": "^3.18.1",
     "pubnub-react": "^1.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

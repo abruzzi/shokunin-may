@@ -4,14 +4,6 @@ import { shallow } from 'enzyme';
 import Panel from './Panel';
 
 describe('Panel', () => {
-  it('basic render', () => {
-    const props = {};
-
-    const wrapper = shallow(<Panel {...props} />);
-
-    expect(wrapper.find('Container').exists()).toBe(true);
-  });
-
   it('format a little bit', () => {
     const props = {
       temperature: 1.244,
@@ -22,10 +14,10 @@ describe('Panel', () => {
 
     const wrapper = shallow(<Panel {...props} />);
 
-    expect(wrapper.find('.temperature').text()).toEqual('Temperature: 1.24');
-    expect(wrapper.find('.humidity').text()).toEqual('Humidity: 2.22');
-    expect(wrapper.find('.light').text()).toEqual('Light: 3.20');
-    expect(wrapper.find('.radiation').text()).toContain('Radiation: 4.20');
+    expect(wrapper.find('.Temperature').text()).toContain('1.24');
+    expect(wrapper.find('.Humidity').text()).toContain('2.22');
+    expect(wrapper.find('.Light').text()).toContain('3.20');
+    expect(wrapper.find('.Radiation').text()).toContain('4.20');
   });
 
 
@@ -36,17 +28,6 @@ describe('Panel', () => {
 
     const wrapper = shallow(<Panel {...props} />);
 
-    expect(wrapper.find('.temperature').text()).toEqual('Temperature: -');
-  });
-
-  it('shows group name', () => {
-    const props = {
-      group: 'Group 1',
-      temperature: 1,
-    };
-
-    const wrapper = shallow(<Panel {...props} />);
-
-    expect(wrapper.find('p').text()).toEqual('Group 1');
+    expect(wrapper.find('.Temperature').text()).toContain('-');
   });
 });

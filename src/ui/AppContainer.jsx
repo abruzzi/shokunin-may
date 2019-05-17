@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import PubNubReact from 'pubnub-react';
 import styled from 'styled-components';
 
+import { Card, Col, Row } from 'antd';
+
 import Averager from '../utils/averager';
 import {parse} from '../utils/parser';
 
@@ -42,9 +44,17 @@ class AppContainer extends Component {
     });
 
     return <Container>
+      <Row gutter={16}>
+
       {THE_MAP.map(value => {
-        return <Panel key={value.group} group={value.group} {...value.averager.average()} />
+        return (<Col span={6} key={value.group}>
+          <Card title={value.group} bordered={false}>
+            <Panel {...value.averager.average()} />
+          </Card>
+        </Col>);
       })}
+
+      </Row>
     </Container>
   }
 }
