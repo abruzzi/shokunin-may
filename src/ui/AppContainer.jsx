@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import PubNubReact from 'pubnub-react';
-import styled from 'styled-components';
 
 import { Card, Col, Row } from 'antd';
 
@@ -10,13 +9,6 @@ import {parse} from '../utils/parser';
 import Panel from './Panel';
 
 const THE_MAP = [...Array(11).keys()].map(index => ({group: `group_${index}`, averager: new Averager(10)}));
-
-const Container = styled.div`
-  font-family: 'Source Sans Pro', sans-serif;
-  
-  width: 1000px;
-  margin: 20px auto;
-`;
 
 class AppContainer extends Component {
   constructor(props) {
@@ -43,7 +35,7 @@ class AppContainer extends Component {
       THE_MAP.find(current => current.group === parsed.groupName).averager.put(parsed.readings);
     });
 
-    return <Container>
+    return <div>
       <Row gutter={16}>
 
       {THE_MAP.map(value => {
@@ -55,7 +47,7 @@ class AppContainer extends Component {
       })}
 
       </Row>
-    </Container>
+    </div>
   }
 }
 

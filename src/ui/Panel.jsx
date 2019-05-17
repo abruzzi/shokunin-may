@@ -17,12 +17,8 @@ const figure = (type, value) => {
       style={{textAlign: 'center'}}
       title={type}
     >
-      <div>
-        {ICONS[type]}
-      </div>
-      <div>
-        {format(value)}
-      </div>
+      <div>{ICONS[type]}</div>
+      <div>{format(value)}</div>
     </div>)
 }
 
