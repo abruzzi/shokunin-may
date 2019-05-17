@@ -2,7 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  
+  display: flex;
+  .figure {
+    flex: 1;
+    padding: 10px;
+    margin: 10px;
+  }
 `;
 
 Container.displayName = 'Container';
@@ -14,12 +19,10 @@ const Panel = ({
     light = 0,
     radiation = 0
 }) => (<Container>
-    <p>
-      <span className="temperature">Temperature: {format(temperature)}</span>
-      <span className="humidity">Humidity: {format(humidity)}</span>
-      <span className="light">Light: {format(light)}</span>
-      <span className="radiation">Radiation: {format(radiation)}</span>
-    </p>
+      <div className="figure temperature">Temperature: {format(temperature)}</div>
+      <div className="figure humidity">Humidity: {format(humidity)}</div>
+      <div className="figure light">Light: {format(light)}</div>
+      <div className="figure radiation">Radiation: {format(radiation)}</div>
 </Container>);
 
 export default Panel;
