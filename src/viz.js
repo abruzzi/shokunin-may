@@ -3,6 +3,7 @@
 import {parse} from './utils/parser';
 import Averager from './utils/averager';
 
+import d3 from 'd3';
 import Rickshaw from 'rickshaw';
 import 'rickshaw/rickshaw.min.css'
 
@@ -19,32 +20,34 @@ const THE_MAP = [...Array(11).keys()].reduce((previous, current) => ({
   [`group_${current}`]: new Averager(10)
 }), {});
 
+const THE_TOTAL = {
+  'group_total': new Averager(10)
+};
 
-var updateInterval = 1000;
+import {Colors} from "./constants";
+
+
+const min = 0;
+const max = 1000;
+
+const logScale = d3.scale.log().domain([min, max]);
+console.log(logScale);
+
+
+const lines = Object.keys(Colors).map(type => ({name: type, color: Colors[type]}))
+
+const updateInterval = 500;
 
 /* Rickshaw.js initialization */
-var chart = new Rickshaw.Graph({
+const chart = new Rickshaw.Graph({
   element: document.querySelector("#chart"),
   width: "300",
-  height: "150",
+  height: "120",
   renderer: "line",
   min: "0",
-  max: "300",
+  max: "1000",
   series: new Rickshaw.Series.FixedDuration(
-    [
-      {
-        name: "temperature",
-        color: "#EC644B"
-      },
-      {
-        name: "humidity",
-        color: "rgba(48, 197, 255, 1)"
-      },
-      {
-        name: 'radiation',
-        color: 'rgba(248, 51, 60, 1)'
-      }
-    ],
+    lines,
     undefined,
     {
       timeInterval: updateInterval,
@@ -56,11 +59,9 @@ var chart = new Rickshaw.Graph({
 new Rickshaw.Graph.Axis.Y({
   graph: chart,
   orientation: "left",
-  tickFormat: function(y) {
-    return y.toFixed(2);
-  },
   ticks: 5,
-  element: document.getElementById("y_axis")
+  element: document.getElementById("y_axis"),
+  scale: logScale
 });
 
 pubnub.addListener({
@@ -68,19 +69,13 @@ pubnub.addListener({
     const parsed = parse(data.message);
     THE_MAP[parsed.groupName].put(parsed.readings);
 
-    // chart.series.addData({temperature: THE_MAP[parsed.groupName].average().temperature});
     chart.series.addData({
-      temperature: THE_MAP[parsed.groupName].average().temperature,
-      humidity: THE_MAP[parsed.groupName].average().humidity,
-      radiation: THE_MAP[parsed.groupName].average().radiation
+      Temperature: THE_MAP[parsed.groupName].average().temperature,
+      Humidity: THE_MAP[parsed.groupName].average().humidity,
+      Light: THE_MAP[parsed.groupName].average().light,
+      Radiation: THE_MAP[parsed.groupName].average().radiation
     });
 
     chart.render();
-
-    console.log({
-      group: parsed.groupName,
-      timestamp: parsed.timestamp,
-      average: THE_MAP[parsed.groupName].average()
-    });
   }
 });
