@@ -2,11 +2,11 @@ import React from 'react';
 import { Col, Row, Icon } from 'antd';
 const format = (figure) => isNaN(Number(figure)) ? '-' : Number(figure).toFixed(2);
 
-const ICONS = {
-  Temperature: <Icon type="dashboard" />,
+const Sensors = {
+  Temperature: <Icon type="dashboard" style={{color: 'rgba(48, 197, 255, 1)'}}/>,
   Humidity: <Icon type="cloud" />,
-  Light: <Icon type="bulb" />,
-  Radiation: <Icon type="alert" />
+  Light: <Icon type="bulb" style={{color: 'rgba(0, 167, 225, 1)'}} />,
+  Radiation: <Icon type="alert" style={{color: 'rgba(248, 51, 60, 1)'}}/>
 }
 
 const figure = (type, value) => {
@@ -17,22 +17,15 @@ const figure = (type, value) => {
       style={{textAlign: 'center'}}
       title={type}
     >
-      <div>{ICONS[type]}</div>
+      <div>{Sensors[type]}</div>
       <div>{format(value)}</div>
     </div>)
-}
-
-const Labels = [
-  'Temperature',
-  'Humidity',
-  'Light',
-  'Radiation'
-];
+};
 
 const Panel = (props) => (
   <div>
     <Row>
-      {Labels.map(label => {
+      {Object.keys(Sensors).map(label => {
         return (<Col span={6} key={label}>
           {figure(label, props[label.toLowerCase()])}
         </Col>)

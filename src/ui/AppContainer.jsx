@@ -8,7 +8,7 @@ import {parse} from '../utils/parser';
 
 import Panel from './Panel';
 
-const THE_MAP = [...Array(11).keys()].map(index => ({group: `group_${index}`, averager: new Averager(10)}));
+const THE_MAP = [...Array(11).keys()].map(index => ({group: `group_${index}`, averager: new Averager(10), data: {}}));
 
 class AppContainer extends Component {
   constructor(props) {
@@ -32,7 +32,11 @@ class AppContainer extends Component {
 
     messages.forEach(message => {
       const parsed = parse(message.message);
-      THE_MAP.find(current => current.group === parsed.groupName).averager.put(parsed.readings);
+      const group = THE_MAP.find(current => current.group === parsed.groupName);
+      if(group) {
+        group.averager.put(parsed.readings);
+        group.data = parsed;
+      }
     });
 
     return <div>
@@ -40,7 +44,7 @@ class AppContainer extends Component {
 
       {THE_MAP.map(value => {
         return (<Col span={6} key={value.group}>
-          <Card title={value.group} bordered={false}>
+          <Card title={value.group.toUpperCase()} bordered={false}>
             <Panel {...value.averager.average()} />
           </Card>
         </Col>);
