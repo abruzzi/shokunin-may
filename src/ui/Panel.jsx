@@ -37,7 +37,7 @@ class Panel extends React.Component {
 
     this.chart = new Rickshaw.Graph({
       element: document.querySelector(`#${group}`),
-      width: "300",
+      width: "240",
       height: "120",
       renderer: "line",
       min: "0",
@@ -50,6 +50,10 @@ class Panel extends React.Component {
           maxDataPoints: 100
         }
       )
+    });
+
+    new Rickshaw.Graph.HoverDetail({
+      graph: this.chart
     });
 
     this.chart.render();
