@@ -1,12 +1,12 @@
 import React, {Component} from "react";
 import PubNubReact from 'pubnub-react';
 
-import { Modal, Button } from 'antd';
+import { Drawer, Button } from 'antd';
 
 import { Card, Col, Row } from 'antd';
 import Panel from './Panel';
 
-import { Map, TileLayer, Circle } from 'react-leaflet';
+import { Map, TileLayer, CircleMarker, Popup } from 'react-leaflet';
 
 import {parse} from '../utils/parser';
 import groupMap from '../utils/group';
@@ -22,6 +22,7 @@ class AppContainer extends Component {
     this.pubnub.init(this);
 
     this.showModal = this.showModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentWillMount() {
@@ -38,6 +39,12 @@ class AppContainer extends Component {
       visible: true,
     });
   };
+
+  closeModal () {
+    this.setState({
+      visible: false
+    })
+  }
 
   render() {
     const messages = this.pubnub.getMessage(CHANNEL);
@@ -56,7 +63,7 @@ class AppContainer extends Component {
     const position = [-24.00, 132.00];
 
     return <div style={{position: 'relative'}}>
-      <Button style={{position: 'absolute', top: '20px', right: '20px', zIndex: '1000'}} onClick={() => this.showModal()}>View details</Button>
+      <Button ghost style={{position: 'absolute', top: '20px', right: '20px', zIndex: '1000'}} onClick={() => this.showModal()}>List View</Button>
       <Map center={position} zoom={4}>
         <TileLayer
           url="http://tile.stamen.com/toner/{z}/{x}/{y}.png"
@@ -64,23 +71,28 @@ class AppContainer extends Component {
         {
           Object.values(groupMap).filter(g => g.data.location).map(value => {
             const position = [value.data.location.latitude, value.data.location.longitude];
-            return (<Circle center={position} color="rgba(255, 111, 89, 1)" fillColor="rgba(255, 111, 89, 1)" radius={200} />)
+            return (<CircleMarker center={position} color="rgba(255, 111, 89, 1)" fillColor="rgba(255, 111, 89, 1)" radius={8}>
+              <Popup>
+                <Card title={value.name.toUpperCase()} bordered>
+                  <Panel group={value.name} {...value.averager.average()} />
+                </Card>
+              </Popup>
+            </CircleMarker>)
           })
         }
       </Map>
 
-      <Modal
-        title="Details"
+      <Drawer
         visible={this.state.visible}
-        onOk={this.handleOk}
-        onCancel={this.handleCancel}
         style={{zIndex: '1001'}}
-        width={1024}
+        width={360}
+        closable={false}
+        onClose={this.closeModal}
       >
         <Row gutter={16}>
 
           {Object.values(groupMap).map(value => {
-            return (<Col span={6} key={value.name} style={{padding: '8px'}}>
+            return (<Col span={24} key={value.name} style={{padding: '8px'}}>
               <Card title={value.name.toUpperCase()} bordered>
                 <Panel group={value.name} {...value.averager.average()} />
               </Card>
@@ -88,7 +100,7 @@ class AppContainer extends Component {
           })}
 
         </Row>
-      </Modal>
+      </Drawer>
     </div>
   }
 }
