@@ -1,8 +1,8 @@
 import React from 'react';
-import { Col, Row, Icon } from 'antd';
+import { Col, Row } from 'antd';
 
-import {COLORS, SENSORS_ICON_MAP} from "../constants";
-import Rickshaw from "rickshaw";
+import {SENSORS_ICON_MAP} from "../constants";
+import {createRealTimeChart} from "../utils/chart";
 
 const format = (figure) => isNaN(Number(figure)) ? '-' : Number(figure).toFixed(2);
 
@@ -19,7 +19,6 @@ const figure = (type, value) => {
     </div>)
 };
 
-const updateInterval = 500;
 
 class Panel extends React.Component {
   constructor(props) {
@@ -29,31 +28,7 @@ class Panel extends React.Component {
 
   componentDidMount() {
     const {group} = this.props;
-
-    const lines = Object.keys(COLORS).map(type => ({name: type, color: COLORS[type]}))
-
-    this.chart = new Rickshaw.Graph({
-      element: document.querySelector(`#${group}`),
-      width: "240",
-      height: "120",
-      renderer: "line",
-      min: "0",
-      max: "1000",
-      series: new Rickshaw.Series.FixedDuration(
-        lines,
-        undefined,
-        {
-          timeInterval: updateInterval,
-          maxDataPoints: 100
-        }
-      )
-    });
-
-    new Rickshaw.Graph.HoverDetail({
-      graph: this.chart
-    });
-
-    this.chart.render();
+    this.chart = createRealTimeChart(group);
   }
 
   render() {
