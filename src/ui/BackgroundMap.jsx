@@ -1,0 +1,29 @@
+import React from 'react';
+import {Map, CircleMarker, Popup, TileLayer} from "react-leaflet";
+import {Card} from "antd";
+
+import Panel from "./Panel";
+
+import {CENTER} from "../constants";
+
+const BackgroundMap = ({groupMap}) => (
+  <Map center={CENTER} zoom={4}>
+    <TileLayer
+      url="http://tile.stamen.com/toner/{z}/{x}/{y}.png"
+    />
+    {
+      Object.values(groupMap).filter(g => g.data.location).map(value => {
+        const position = [value.data.location.latitude, value.data.location.longitude];
+        return (<CircleMarker key={value.name} center={position} color="rgba(255, 111, 89, 1)" fillColor="rgba(255, 111, 89, 1)" radius={8}>
+          <Popup>
+            <Card title={value.data.displayName} bordered={false}>
+              <Panel group={`m-${value.name}`} {...value.averager.average()} />
+            </Card>
+          </Popup>
+        </CircleMarker>)
+      })
+    }
+  </Map>
+);
+
+export default BackgroundMap;

@@ -1,17 +1,13 @@
 import React, {Component} from "react";
 import PubNubReact from 'pubnub-react';
+import {Button, Drawer} from 'antd';
 
-import { Drawer, Button } from 'antd';
+import {BATCH_FETCH, CHANNEL, SUB_KEY} from "../constants";
 
-import { Card, Col, Row } from 'antd';
-import Panel from './Panel';
+import BackgroundMap from "./BackgroundMap";
+import Sidebar from "./Sidebar";
 
-import { Map, TileLayer, CircleMarker, Popup } from 'react-leaflet';
-
-import {parse} from '../utils/parser';
-import groupMap from '../utils/group';
-
-import {SUB_KEY, CHANNEL, BATCH_FETCH} from "../constants";
+import {convert} from "../utils/message";
 
 import './AppContainer.css';
 
@@ -52,40 +48,14 @@ class AppContainer extends Component {
     const messages = this.pubnub.getMessage(CHANNEL);
     if(messages.length === 0) return null;
 
-    const parsed = messages.map(m => parse(m.message));
-
-    parsed.forEach(group => {
-      groupMap[group.groupName].averager.put(group.readings);
-      groupMap[group.groupName].data = group;
-
-      groupMap['group_total'].averager.put(group.readings);
-      groupMap['group_total'].data = {...group, displayName: 'Total'};
-    });
-
-    const position = [-24.00, 132.00];
+    const groupMap = convert(messages);
 
     return <div className='main-container'>
       <div className="view-detail-button">
         <Button ghost onClick={() => this.showDrawer()}>List View</Button>
       </div>
 
-      <Map center={position} zoom={4}>
-        <TileLayer
-          url="http://tile.stamen.com/toner/{z}/{x}/{y}.png"
-        />
-        {
-          Object.values(groupMap).filter(g => g.data.location).map(value => {
-            const position = [value.data.location.latitude, value.data.location.longitude];
-            return (<CircleMarker key={value.name} center={position} color="rgba(255, 111, 89, 1)" fillColor="rgba(255, 111, 89, 1)" radius={8}>
-              <Popup>
-                <Card title={value.data.displayName} bordered={false}>
-                  <Panel group={`m-${value.name}`} {...value.averager.average()} />
-                </Card>
-              </Popup>
-            </CircleMarker>)
-          })
-        }
-      </Map>
+      <BackgroundMap groupMap={groupMap}/>
 
       <Drawer
         visible={this.state.visible}
@@ -93,17 +63,7 @@ class AppContainer extends Component {
         closable={false}
         onClose={this.closeDrawer}
       >
-        <Row gutter={16}>
-
-          {Object.values(groupMap).filter(g => g.data.location).map(value => {
-            return (<Col span={24} key={value.name} style={{padding: '8px'}}>
-              <Card title={value.data.displayName} bordered>
-                <Panel group={value.name} {...value.averager.average()} />
-              </Card>
-            </Col>);
-          })}
-
-        </Row>
+        <Sidebar groupMap={groupMap}/>
       </Drawer>
     </div>
   }

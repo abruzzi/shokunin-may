@@ -25,3 +25,5 @@ export const SENSORS_ICON_MAP = {
 export const SUB_KEY = 'sub-c-5f1b7c8e-fbee-11e3-aa40-02ee2ddab7fe';
 export const CHANNEL = 'pubnub-sensor-network';
 export const BATCH_FETCH = 20;
+
+export const CENTER = [-24.00, 132.00];
