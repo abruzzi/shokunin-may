@@ -79,7 +79,7 @@ class AppContainer extends Component {
             return (<CircleMarker key={value.name} center={position} color="rgba(255, 111, 89, 1)" fillColor="rgba(255, 111, 89, 1)" radius={8}>
               <Popup>
                 <Card title={value.data.displayName} bordered={false}>
-                  <Panel group={value.name} {...value.averager.average()} />
+                  <Panel group={`m-${value.name}`} {...value.averager.average()} />
                 </Card>
               </Popup>
             </CircleMarker>)

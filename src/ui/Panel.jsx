@@ -4,6 +4,8 @@ import { Col, Row } from 'antd';
 import {SENSORS_ICON_MAP} from "../constants";
 import {createRealTimeChart} from "../utils/chart";
 
+import './Panel.css';
+
 const format = (figure) => isNaN(Number(figure)) ? '-' : Number(figure).toFixed(2);
 
 const figure = (type, value) => {
@@ -54,7 +56,7 @@ class Panel extends React.Component {
         })}
       </Row>
       <Row>
-        <div id={props.group} style={{ overflow: 'hidden' }} />
+        <div id={props.group} className='chart-container' />
       </Row>
     </div>)
   }
