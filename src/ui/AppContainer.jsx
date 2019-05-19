@@ -2,25 +2,24 @@ import React, {Component} from "react";
 import PubNubReact from 'pubnub-react';
 import {Button, Drawer} from 'antd';
 
-import {BATCH_FETCH, CHANNEL, SUB_KEY} from "../constants";
-
 import BackgroundMap from "./BackgroundMap";
 import Sidebar from "./Sidebar";
 
 import {convert} from "../utils/message";
 
+import {BATCH_FETCH, CHANNEL, SUB_KEY} from "../constants";
 import './AppContainer.css';
 
 class AppContainer extends Component {
+  state = {
+    visible: false
+  }
+
   constructor(props) {
     super(props);
-    this.state = { visible: false };
 
     this.pubnub = new PubNubReact({ subscribeKey: SUB_KEY });
     this.pubnub.init(this);
-
-    this.showDrawer = this.showDrawer.bind(this);
-    this.closeDrawer = this.closeDrawer.bind(this);
   }
 
   componentWillMount() {
@@ -32,17 +31,13 @@ class AppContainer extends Component {
     this.pubnub.unsubscribe({ channels: [CHANNEL] });
   }
 
-  showDrawer () {
-    this.setState({
-      visible: true,
-    });
+  showDrawer = () => {
+    this.setState({visible: true});
   };
 
-  closeDrawer () {
-    this.setState({
-      visible: false
-    })
-  }
+  closeDrawer = () => {
+    this.setState({visible: false})
+  };
 
   render() {
     const messages = this.pubnub.getMessage(CHANNEL);

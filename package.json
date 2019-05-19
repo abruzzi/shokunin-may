@@ -23,12 +23,17 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.0",
     "jest-cli": "^24.8.0",
+    "jest-transform-css": "^2.0.0",
     "parcel-bundler": "^1.12.3"
   },
   "jest": {
     "setupFilesAfterEnv": [
       "./config/setupTests.js"
-    ]
+    ],
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest",
+      ".+\\.(css|styl|less|sass|scss)$": "jest-transform-css"
+    }
   },
   "dependencies": {
     "antd": "^3.18.1",
