@@ -28,6 +28,7 @@ describe('parser', () => {
     const parsed = parse(data);
     expect(parsed).toEqual(expect.objectContaining({
       groupName: expect.stringContaining('group_10'),
+      displayName: expect.stringContaining('Barrack'),
       timestamp: 1557999820,
       location: {
         latitude: -31.95866,

@@ -9,7 +9,8 @@ describe('Panel', () => {
       temperature: 1.244,
       humidity: 2.220,
       light: 3.2,
-      radiation: 4.2
+      radiation: 4.2,
+      group: 'G8'
     };
 
     const wrapper = shallow(<Panel {...props} />);
@@ -24,6 +25,7 @@ describe('Panel', () => {
   it('error handling', () => {
     const props = {
       temperature: NaN,
+      group: 'G8'
     };
 
     const wrapper = shallow(<Panel {...props} />);

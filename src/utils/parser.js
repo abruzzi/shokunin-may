@@ -5,6 +5,7 @@ const parse = (data) => {
   
   return {
     groupName: match.group_name,
+    displayName: match.display_name || '',
     timestamp: data.timestamp,
     location: {
       latitude: match.latitude,

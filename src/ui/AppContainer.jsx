@@ -13,6 +13,8 @@ import groupMap from '../utils/group';
 
 import {SUB_KEY, CHANNEL, BATCH_FETCH} from "../constants";
 
+import './AppContainer.css';
+
 class AppContainer extends Component {
   constructor(props) {
     super(props);
@@ -21,8 +23,8 @@ class AppContainer extends Component {
     this.pubnub = new PubNubReact({ subscribeKey: SUB_KEY });
     this.pubnub.init(this);
 
-    this.showModal = this.showModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.showDrawer = this.showDrawer.bind(this);
+    this.closeDrawer = this.closeDrawer.bind(this);
   }
 
   componentWillMount() {
@@ -34,13 +36,13 @@ class AppContainer extends Component {
     this.pubnub.unsubscribe({ channels: [CHANNEL] });
   }
 
-  showModal () {
+  showDrawer () {
     this.setState({
       visible: true,
     });
   };
 
-  closeModal () {
+  closeDrawer () {
     this.setState({
       visible: false
     })
@@ -57,13 +59,16 @@ class AppContainer extends Component {
       groupMap[group.groupName].data = group;
 
       groupMap['group_total'].averager.put(group.readings);
-      groupMap['group_total'].data = group;
+      groupMap['group_total'].data = {...group, displayName: 'Total'};
     });
 
     const position = [-24.00, 132.00];
 
-    return <div style={{position: 'relative'}}>
-      <Button ghost style={{position: 'absolute', top: '20px', right: '20px', zIndex: '1000'}} onClick={() => this.showModal()}>List View</Button>
+    return <div className='main-container'>
+      <div className="view-detail-button">
+        <Button ghost onClick={() => this.showDrawer()}>List View</Button>
+      </div>
+
       <Map center={position} zoom={4}>
         <TileLayer
           url="http://tile.stamen.com/toner/{z}/{x}/{y}.png"
@@ -71,9 +76,9 @@ class AppContainer extends Component {
         {
           Object.values(groupMap).filter(g => g.data.location).map(value => {
             const position = [value.data.location.latitude, value.data.location.longitude];
-            return (<CircleMarker center={position} color="rgba(255, 111, 89, 1)" fillColor="rgba(255, 111, 89, 1)" radius={8}>
+            return (<CircleMarker key={value.name} center={position} color="rgba(255, 111, 89, 1)" fillColor="rgba(255, 111, 89, 1)" radius={8}>
               <Popup>
-                <Card title={value.name.toUpperCase()} bordered>
+                <Card title={value.data.displayName} bordered={false}>
                   <Panel group={value.name} {...value.averager.average()} />
                 </Card>
               </Popup>
@@ -84,16 +89,15 @@ class AppContainer extends Component {
 
       <Drawer
         visible={this.state.visible}
-        style={{zIndex: '1001'}}
         width={360}
         closable={false}
-        onClose={this.closeModal}
+        onClose={this.closeDrawer}
       >
         <Row gutter={16}>
 
-          {Object.values(groupMap).map(value => {
+          {Object.values(groupMap).filter(g => g.data.location).map(value => {
             return (<Col span={24} key={value.name} style={{padding: '8px'}}>
-              <Card title={value.name.toUpperCase()} bordered>
+              <Card title={value.data.displayName} bordered>
                 <Panel group={value.name} {...value.averager.average()} />
               </Card>
             </Col>);

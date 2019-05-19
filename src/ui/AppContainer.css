@@ -1,0 +1,10 @@
+.main-container {
+  position: relative;
+}
+
+.view-detail-button {
+   position: absolute;
+   top: 20px;
+   right: 20px;
+   z-Index: 1000;
+ }

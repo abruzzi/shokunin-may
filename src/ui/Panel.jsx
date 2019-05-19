@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Row, Icon } from 'antd';
 
-import {Colors, Sensors} from "../constants";
+import {COLORS, SENSORS_ICON_MAP} from "../constants";
 import Rickshaw from "rickshaw";
 
 const format = (figure) => isNaN(Number(figure)) ? '-' : Number(figure).toFixed(2);
@@ -14,7 +14,7 @@ const figure = (type, value) => {
       style={{textAlign: 'center'}}
       title={type}
     >
-      <div>{Sensors[type]}</div>
+      <div>{SENSORS_ICON_MAP[type]}</div>
       <div>{format(value)}</div>
     </div>)
 };
@@ -30,10 +30,7 @@ class Panel extends React.Component {
   componentDidMount() {
     const {group} = this.props;
 
-    const min = 0;
-    const max = 1000;
-
-    const lines = Object.keys(Colors).map(type => ({name: type, color: Colors[type]}))
+    const lines = Object.keys(COLORS).map(type => ({name: type, color: COLORS[type]}))
 
     this.chart = new Rickshaw.Graph({
       element: document.querySelector(`#${group}`),
@@ -75,7 +72,7 @@ class Panel extends React.Component {
 
     return (<div>
       <Row>
-        {Object.keys(Sensors).map(label => {
+        {Object.keys(SENSORS_ICON_MAP).map(label => {
           return (<Col span={6} key={label}>
             {figure(label, props[label.toLowerCase()])}
           </Col>)

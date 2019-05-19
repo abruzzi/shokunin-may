@@ -3,66 +3,77 @@
       "group_name": "group_0",
       "sensor_uuid_starts_with": "probe-0",
       "latitude": -16.876261,
-      "longitude": 145.753509
+      "longitude": 145.753509,
+      "display_name": "2 Airport Ave, Cairns City QLD 4870"
     },
     {
       "group_name": "group_1",
       "sensor_uuid_starts_with": "probe-1",
       "latitude": -33.866239,
-      "longitude": 151.206597
+      "longitude": 151.206597,
+      "display_name": "50 Carrington St, Sydney NSW 2000"
     },
     {
       "group_name": "group_2",
       "sensor_uuid_starts_with": "probe-2",
       "latitude": -12.4666,
-      "longitude": 130.846727
+      "longitude": 130.846727,
+      "display_name": "7 Kitchener Dr, Darwin City NT 0800"
     },
     {
       "group_name": "group_3",
       "sensor_uuid_starts_with": "probe-3",
       "latitude": -33.85649,
-      "longitude": 151.215307
+      "longitude": 151.215307,
+      "display_name": "Dubbagullee, Sydney NSW 2000"
     },
     {
       "group_name": "group_4",
       "sensor_uuid_starts_with": "probe-4",
       "latitude": -37.81631,
-      "longitude": 144.963862
+      "longitude": 144.963862,
+      "display_name": "303-317 Collins St, Melbourne VIC 3004"
     },
     {
       "group_name": "group_5",
       "sensor_uuid_starts_with": "probe-5",
       "latitude": -37.811645,
-      "longitude": 144.937466
+      "longitude": 144.937466,
+      "display_name": "101 Waterfront Way, Docklands VIC 3008"
     },
     {
       "group_name": "group_6",
       "sensor_uuid_starts_with": "probe-6",
       "latitude": -27.465731,
-      "longitude": 153.027659
+      "longitude": 153.027659,
+      "display_name": "Eva Air, 127 Creek St, Brisbane City QLD 4000"
     },
     {
       "group_name": "group_7",
       "sensor_uuid_starts_with": "probe-7",
       "latitude": -28.006011,
-      "longitude": 153.429668
+      "longitude": 153.429668,
+      "display_name": "Q1 / 9 Hamilton Ave, Surfers Paradise QLD 4217"
     },
     {
       "group_name": "group_8",
       "sensor_uuid_starts_with": "probe-8",
       "latitude": -35.307217,
-      "longitude": 149.123062
+      "longitude": 149.123062,
+      "display_name": "Parliament Dr, Capital Hill ACT 2600"
     },
     {
       "group_name": "group_9",
       "sensor_uuid_starts_with": "probe-9",
       "latitude": -34.914081,
-      "longitude": 138.604649
+      "longitude": 138.604649,
+      "display_name": "Frome Rd, Adelaide SA 5000"
     },
     {
       "group_name": "group_10",
       "sensor_uuid_starts_with": "probe-[a-zA-Z]",
       "latitude": -31.95866,
-      "longitude": 115.858317
+      "longitude": 115.858317,
+      "display_name": "Barrack Square, Perth WA 6000"
     }
   ]
