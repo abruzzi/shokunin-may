@@ -21,7 +21,6 @@ const figure = (type, value) => {
     </div>)
 };
 
-
 class Panel extends React.Component {
   constructor(props) {
     super(props);
@@ -30,7 +29,7 @@ class Panel extends React.Component {
 
   componentDidMount() {
     const {group} = this.props;
-    this.chart = createRealTimeChart(group);
+    this.chart = this.props.createRealTimeChart(group);
   }
 
   render() {

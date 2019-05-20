@@ -5,6 +5,7 @@ import {Card} from "antd";
 import Panel from "./Panel";
 
 import {CENTER} from "../constants";
+import {createRealTimeChart} from "../utils/chart";
 
 const BackgroundMap = ({groups = {}}) => (
   <Map center={CENTER} zoom={4}>
@@ -17,7 +18,7 @@ const BackgroundMap = ({groups = {}}) => (
         return (<CircleMarker key={value.name} center={position} color="rgba(255, 111, 89, 1)" fillColor="rgba(255, 111, 89, 1)" radius={8}>
           <Popup>
             <Card title={value.data.displayName} bordered={false}>
-              <Panel group={`m-${value.name}`} {...value.averager.average()} />
+              <Panel createRealTimeChart={createRealTimeChart} group={`m-${value.name}`} {...value.averager.average()} />
             </Card>
           </Popup>
         </CircleMarker>)

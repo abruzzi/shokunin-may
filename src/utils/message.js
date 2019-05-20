@@ -1,11 +1,11 @@
-import Averager from "./averager";
+import FixedDataset from "./fixedDataset";
 import {parse} from "./parser";
 
 const allGroups = [...Array(11).keys()].reduce((previous, current) => ({
   ...previous,
   [`group_${current}`]: {
     name: `group_${current}`,
-    averager: new Averager(10),
+    averager: new FixedDataset(10),
     data: {}
   }
 }), {});
@@ -14,7 +14,7 @@ const groupMap = {
   ...allGroups,
   group_total: {
     name: 'group_total',
-    averager: new Averager(10),
+    averager: new FixedDataset(10),
     data: {}
   }
 };

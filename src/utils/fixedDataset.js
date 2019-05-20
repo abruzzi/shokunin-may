@@ -1,4 +1,4 @@
-class Averager {
+class FixedDataset {
   constructor(size = 1) {
     this.size = size;
     this.data = [];
@@ -28,4 +28,4 @@ class Averager {
   }
 }
 
-export default Averager;
+export default FixedDataset;
