@@ -58,7 +58,7 @@ class AppContainer extends Component {
         closable={false}
         onClose={this.closeDrawer}
       >
-        <Sidebar groupMap={groupMap}/>
+        <Sidebar groups={groupMap}/>
       </Drawer>
     </div>
   }

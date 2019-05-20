@@ -6,7 +6,7 @@ import Panel from "./Panel";
 
 import {CENTER} from "../constants";
 
-const BackgroundMap = ({groups}) => (
+const BackgroundMap = ({groups = {}}) => (
   <Map center={CENTER} zoom={4}>
     <TileLayer
       url="http://tile.stamen.com/toner/{z}/{x}/{y}.png"
