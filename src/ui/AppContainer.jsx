@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import PubNubReact from 'pubnub-react';
 import {Button, Drawer} from 'antd';
 
 import BackgroundMap from "./BackgroundMap";
@@ -7,7 +6,7 @@ import Sidebar from "./Sidebar";
 
 import {convert} from "../utils/message";
 
-import {BATCH_FETCH, CHANNEL, SUB_KEY} from "../constants";
+import {BATCH_FETCH, CHANNEL} from "../constants";
 import './AppContainer.css';
 
 class AppContainer extends Component {
@@ -17,9 +16,7 @@ class AppContainer extends Component {
 
   constructor(props) {
     super(props);
-
-    this.pubnub = new PubNubReact({ subscribeKey: SUB_KEY });
-    this.pubnub.init(this);
+    this.pubnub = props.initPubNub(this);
   }
 
   componentWillMount() {
@@ -43,14 +40,14 @@ class AppContainer extends Component {
     const messages = this.pubnub.getMessage(CHANNEL);
     if(messages.length === 0) return null;
 
-    const groupMap = convert(messages);
+    const groups = convert(messages);
 
     return <div className='main-container'>
       <div className="view-detail-button">
         <Button ghost onClick={() => this.showDrawer()}>List View</Button>
       </div>
 
-      <BackgroundMap groups={groupMap}/>
+      <BackgroundMap groups={groups}/>
 
       <Drawer
         visible={this.state.visible}
@@ -58,7 +55,7 @@ class AppContainer extends Component {
         closable={false}
         onClose={this.closeDrawer}
       >
-        <Sidebar groups={groupMap}/>
+        <Sidebar groups={groups}/>
       </Drawer>
     </div>
   }
