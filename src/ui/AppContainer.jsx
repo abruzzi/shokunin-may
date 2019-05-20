@@ -4,7 +4,7 @@ import {Button, Drawer} from 'antd';
 import BackgroundMap from "./BackgroundMap";
 import Sidebar from "./Sidebar";
 
-import {convert} from "../utils/message";
+import {convertRawDataForRendering} from "../utils/message";
 
 import {BATCH_FETCH, CHANNEL} from "../constants";
 import './AppContainer.css';
@@ -40,7 +40,7 @@ class AppContainer extends Component {
     const messages = this.pubnub.getMessage(CHANNEL);
     if(messages.length === 0) return null;
 
-    const groups = convert(messages);
+    const groups = convertRawDataForRendering(messages);
 
     return <div className='main-container'>
       <div className="view-detail-button">

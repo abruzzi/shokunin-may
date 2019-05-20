@@ -1,7 +1,25 @@
+import Averager from "./averager";
 import {parse} from "./parser";
-import groupMap from "./group";
 
-const convert = (messages) => {
+const allGroups = [...Array(11).keys()].reduce((previous, current) => ({
+  ...previous,
+  [`group_${current}`]: {
+    name: `group_${current}`,
+    averager: new Averager(10),
+    data: {}
+  }
+}), {});
+
+const groupMap = {
+  ...allGroups,
+  group_total: {
+    name: 'group_total',
+    averager: new Averager(10),
+    data: {}
+  }
+};
+
+const convertRawDataForRendering = (messages) => {
   const parsed = messages.map(m => parse(m.message));
 
   parsed.forEach(group => {
@@ -15,4 +33,4 @@ const convert = (messages) => {
   return groupMap;
 };
 
-export {convert};
+export {convertRawDataForRendering};
