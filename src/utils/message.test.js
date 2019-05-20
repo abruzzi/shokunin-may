@@ -1,4 +1,5 @@
 import {convertRawDataForRendering} from "./message";
+import {ROLLING_WINDOW_SIZE} from "../constants";
 
 describe('convert data', () => {
   const raw = [{
@@ -18,7 +19,7 @@ describe('convert data', () => {
 
     [...Array(10).keys()].forEach((x) => {
       expect(groups[`group_${x}`].data.readings).toEqual(undefined);
-      expect(groups[`group_${x}`].averager).toEqual({data: [], size: 10});
+      expect(groups[`group_${x}`].averager).toEqual({data: [], size: ROLLING_WINDOW_SIZE});
     });
 
     expect(groups['group_10'].data.readings).toEqual({
@@ -37,7 +38,7 @@ describe('convert data', () => {
           radiation: 197
         }
       ],
-      size: 10
+      size: ROLLING_WINDOW_SIZE
     });
 
     expect(groups['group_total'].data.readings).toEqual({
@@ -47,4 +48,4 @@ describe('convert data', () => {
       radiation: 197
     });
   });
-})
+});

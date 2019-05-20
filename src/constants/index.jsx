@@ -27,3 +27,5 @@ export const CHANNEL = 'pubnub-sensor-network';
 export const BATCH_FETCH = 20;
 
 export const CENTER = [-24.00, 132.00];
+
+export const ROLLING_WINDOW_SIZE = 10;

@@ -1,11 +1,12 @@
 import FixedDataSet from "./fixedDataSet";
 import {parse} from "./parser";
+import {ROLLING_WINDOW_SIZE} from "../constants";
 
 const allGroups = [...Array(11).keys()].reduce((previous, current) => ({
   ...previous,
   [`group_${current}`]: {
     name: `group_${current}`,
-    averager: new FixedDataSet(10),
+    averager: new FixedDataSet(ROLLING_WINDOW_SIZE),
     data: {}
   }
 }), {});
@@ -14,7 +15,7 @@ const groupMap = {
   ...allGroups,
   group_total: {
     name: 'group_total',
-    averager: new FixedDataSet(10),
+    averager: new FixedDataSet(ROLLING_WINDOW_SIZE),
     data: {}
   }
 };
