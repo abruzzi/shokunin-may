@@ -50,7 +50,7 @@ class AppContainer extends Component {
         <Button ghost onClick={() => this.showDrawer()}>List View</Button>
       </div>
 
-      <BackgroundMap groupMap={groupMap}/>
+      <BackgroundMap groups={groupMap}/>
 
       <Drawer
         visible={this.state.visible}

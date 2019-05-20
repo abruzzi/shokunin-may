@@ -6,13 +6,13 @@ import Panel from "./Panel";
 
 import {CENTER} from "../constants";
 
-const BackgroundMap = ({groupMap}) => (
+const BackgroundMap = ({groups}) => (
   <Map center={CENTER} zoom={4}>
     <TileLayer
       url="http://tile.stamen.com/toner/{z}/{x}/{y}.png"
     />
     {
-      Object.values(groupMap).filter(g => g.data.location).map(value => {
+      Object.values(groups).filter(g => g.data.location).map(value => {
         const position = [value.data.location.latitude, value.data.location.longitude];
         return (<CircleMarker key={value.name} center={position} color="rgba(255, 111, 89, 1)" fillColor="rgba(255, 111, 89, 1)" radius={8}>
           <Popup>
