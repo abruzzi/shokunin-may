@@ -1,10 +1,9 @@
 import React from 'react';
-import { Col, Row } from 'antd';
+import {Col, Row} from 'antd';
 
 import {SENSORS_ICON_MAP} from "../constants";
-import {createRealTimeChart} from "../utils/chart";
 
-import './Panel.css';
+import './ChartSection.css';
 
 const format = (figure) => isNaN(Number(figure)) ? '-' : Number(figure).toFixed(2);
 
@@ -21,7 +20,7 @@ const figure = (type, value) => {
     </div>)
 };
 
-class Panel extends React.Component {
+class ChartSection extends React.Component {
   constructor(props) {
     super(props);
     this.chart = null;
@@ -61,4 +60,4 @@ class Panel extends React.Component {
   }
 }
 
-export default Panel;
+export default ChartSection;

@@ -11,7 +11,7 @@ describe('Sidebar', () => {
 
     const wrapper = shallow(<Sidebar {...props} />);
 
-    expect(wrapper.find('Panel').exists()).toEqual(false);
+    expect(wrapper.find('ChartSection').exists()).toEqual(false);
   });
 
   it('renders panels for groups', () => {
@@ -42,10 +42,10 @@ describe('Sidebar', () => {
 
     const wrapper = shallow(<Sidebar {...props} />);
 
-    expect(wrapper.find('Panel').exists()).toEqual(true);
-    expect(wrapper.find('Panel').prop('group')).toEqual('G0');
+    expect(wrapper.find('ChartSection').exists()).toEqual(true);
+    expect(wrapper.find('ChartSection').prop('group')).toEqual('G0');
 
-    expect(wrapper.find('Panel').props()).toEqual(
+    expect(wrapper.find('ChartSection').props()).toEqual(
       expect.objectContaining(sensorReadings));
   });
 });

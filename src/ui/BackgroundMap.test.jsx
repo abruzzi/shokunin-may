@@ -51,10 +51,10 @@ describe('background map', () => {
     it('renders popup with panel', () => {
       const wrapper = shallow(<BackgroundMap {...props}/>);
 
-      expect(wrapper.find('Panel').exists()).toEqual(true);
-      expect(wrapper.find('Panel').prop('group')).toEqual('m-G0');
+      expect(wrapper.find('ChartSection').exists()).toEqual(true);
+      expect(wrapper.find('ChartSection').prop('group')).toEqual('m-G0');
 
-      expect(wrapper.find('Panel').props()).toEqual(
+      expect(wrapper.find('ChartSection').props()).toEqual(
         expect.objectContaining(sensorReadings));
     })
   })

@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Panel from './Panel';
+import ChartSection from './ChartSection';
 
-describe('Panel', () => {
+describe('ChartSection', () => {
   it('format a little bit', () => {
     const props = {
       temperature: 1.244,
@@ -14,7 +14,7 @@ describe('Panel', () => {
       createRealTimeChart: jest.fn().mockImplementation(() => {})
     };
 
-    const wrapper = shallow(<Panel {...props} />);
+    const wrapper = shallow(<ChartSection {...props} />);
 
     expect(wrapper.find('.Temperature').text()).toContain('1.24');
     expect(wrapper.find('.Humidity').text()).toContain('2.22');
@@ -31,7 +31,7 @@ describe('Panel', () => {
       createRealTimeChart: jest.fn().mockImplementation(() => {})
     };
 
-    const wrapper = shallow(<Panel {...props} />);
+    const wrapper = shallow(<ChartSection {...props} />);
 
     expect(wrapper.find('.Temperature').text()).toContain('-');
   });
