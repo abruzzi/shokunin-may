@@ -4,18 +4,16 @@ import {Card} from "antd";
 
 import ChartSection from "./ChartSection";
 
-import {CENTER} from "../constants";
+import {CENTER, MARKER_COLOR, MARKER_RADIUS, MAP_TILE_SERVICE} from "../constants";
 import {createRealTimeChart} from "../utils/chart";
 
 const BackgroundMap = ({groups = {}}) => (
   <Map center={CENTER} zoom={4}>
-    <TileLayer
-      url="http://tile.stamen.com/toner/{z}/{x}/{y}.png"
-    />
+    <TileLayer url={MAP_TILE_SERVICE} />
     {
       Object.values(groups).filter(g => g.data.location).map(value => {
         const position = [value.data.location.latitude, value.data.location.longitude];
-        return (<CircleMarker key={value.name} center={position} color="rgba(255, 111, 89, 1)" fillColor="rgba(255, 111, 89, 1)" radius={8}>
+        return (<CircleMarker key={value.name} center={position} color={MARKER_COLOR} fillColor={MARKER_COLOR} radius={MARKER_RADIUS}>
           <Popup>
             <Card title={value.data.displayName} bordered={false}>
               <ChartSection createRealTimeChart={createRealTimeChart} group={`m-${value.name}`} {...value.averager.average()} />

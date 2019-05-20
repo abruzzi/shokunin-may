@@ -15,6 +15,10 @@ export const COLORS = {
   Radiation: 'rgba(255, 111, 89, 1)'
 };
 
+export const MARKER_COLOR = "#71F04A";
+export const MARKER_RADIUS = 8;
+export const MAP_TILE_SERVICE = "http://tile.stamen.com/toner/{z}/{x}/{y}.png";
+
 export const SENSORS_ICON_MAP = {
   Temperature: <Icon type="dashboard" style={{color: COLORS[SENSOR_TYPES.Temperature]}} />,
   Humidity: <Icon type="cloud" style={{color: COLORS[SENSOR_TYPES.Humidity]}} />,
