@@ -18,6 +18,6 @@ const parse = (data) => {
       radiation: Number(data.radiation_level)
     }
   };
-}
+};
 
 export {parse};

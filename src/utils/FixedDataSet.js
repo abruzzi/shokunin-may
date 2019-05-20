@@ -1,4 +1,4 @@
-class FixedDataset {
+class FixedDataSet {
   constructor(size = 1) {
     this.size = size;
     this.data = [];
@@ -28,4 +28,4 @@ class FixedDataset {
   }
 }
 
-export default FixedDataset;
+export default FixedDataSet;

@@ -1,8 +1,8 @@
-import FixedDataset from './fixedDataset';
+import FixedDataSet from './fixedDataSet';
 
 describe('averager', () => {
   it('calculate average for 1 reading', () => {
-    const averager = new FixedDataset(2);
+    const averager = new FixedDataSet(2);
     averager.put({
       temperature: 2,
       humidity: 2,
@@ -21,7 +21,7 @@ describe('averager', () => {
   });
 
   it('calculate average for 2 numbers', () => {
-    const averager = new FixedDataset(2);
+    const averager = new FixedDataSet(2);
     
     averager.put({
       temperature: 2,
@@ -48,7 +48,7 @@ describe('averager', () => {
   });
 
   it('calculate rolling average', () => {
-    const averager = new FixedDataset(2);
+    const averager = new FixedDataSet(2);
     
     averager.put({
       temperature: 2,
