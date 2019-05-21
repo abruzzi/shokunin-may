@@ -3,6 +3,7 @@ import {Button, Drawer} from 'antd';
 
 import BackgroundMap from "./BackgroundMap";
 import Sidebar from "./Sidebar";
+import SummaryPanel from './SummaryPanel'
 
 import {convertRawDataForRendering} from "../utils/message";
 
@@ -57,6 +58,8 @@ class AppContainer extends Component {
       >
         <Sidebar groups={groups}/>
       </Drawer>
+
+      <SummaryPanel summary={groups['group_total']} />
     </div>
   }
 }

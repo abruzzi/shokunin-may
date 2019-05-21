@@ -24,6 +24,7 @@ describe('AppContainer', () => {
     expect(wrapper.find('Button').exists()).toBe(true);
     expect(wrapper.find('BackgroundMap').exists()).toBe(true);
     expect(wrapper.find('Sidebar').exists()).toBe(true);
+    expect(wrapper.find('SummaryPanel').exists()).toBe(true);
   });
 
   it('using parsed data for sub component for rendering', () => {
