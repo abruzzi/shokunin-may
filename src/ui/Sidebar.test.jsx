@@ -33,7 +33,7 @@ describe('Sidebar', () => {
             displayName: 'CBD Melbourne VIC 3000'
           },
           name: 'G0',
-          averager: {
+          rra: {
             average: jest.fn().mockImplementation(() => sensorReadings)
           }
         }

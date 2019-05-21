@@ -16,7 +16,7 @@ const BackgroundMap = ({groups = {}}) => (
         return (<CircleMarker key={value.name} center={position} color={MARKER_COLOR} fillColor={MARKER_COLOR} radius={MARKER_RADIUS}>
           <Popup>
             <Card title={value.data.displayName} bordered={false}>
-              <ChartSection createRealTimeChart={createRealTimeChart} group={`m-${value.name}`} {...value.averager.average()} />
+              <ChartSection createRealTimeChart={createRealTimeChart} group={`m-${value.name}`} {...value.rra.average()} />
             </Card>
           </Popup>
         </CircleMarker>)

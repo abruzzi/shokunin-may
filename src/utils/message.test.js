@@ -19,7 +19,7 @@ describe('convert data', () => {
 
     [...Array(10).keys()].forEach((x) => {
       expect(groups[`group_${x}`].data.readings).toEqual(undefined);
-      expect(groups[`group_${x}`].averager).toEqual({data: [], size: ROLLING_WINDOW_SIZE});
+      expect(groups[`group_${x}`].rra).toEqual({data: [], size: ROLLING_WINDOW_SIZE});
     });
 
     expect(groups['group_10'].data.readings).toEqual({
@@ -29,7 +29,7 @@ describe('convert data', () => {
       radiation: 197
     });
 
-    expect(groups['group_10'].averager).toEqual({
+    expect(groups['group_10'].rra).toEqual({
       data: [
         {
           temperature: 23.22,

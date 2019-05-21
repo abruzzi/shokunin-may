@@ -11,7 +11,7 @@ const Sidebar = ({groups = {}}) => (
     {Object.values(groups).filter(g => g.data.location).map(value => {
       return (<Col span={24} key={value.name} className='column'>
         <Card title={value.data.displayName} bordered>
-          <ChartSection createRealTimeChart={createRealTimeChart} group={value.name} {...value.averager.average()} />
+          <ChartSection createRealTimeChart={createRealTimeChart} group={value.name} {...value.rra.average()} />
         </Card>
       </Col>);
     })}

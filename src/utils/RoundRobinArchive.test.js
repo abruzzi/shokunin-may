@@ -1,16 +1,16 @@
-import FixedDataSet from './fixedDataSet';
+import RoundRobinArchive from './RoundRobinArchive';
 
-describe('averager', () => {
+describe('RoundRobinArchive', () => {
   it('calculate average for 1 reading', () => {
-    const averager = new FixedDataSet(2);
-    averager.put({
+    const rra = new RoundRobinArchive(2);
+    rra.put({
       temperature: 2,
       humidity: 2,
       light: 2,
       radiation: 2
     });
 
-    const result = averager.average();
+    const result = rra.average();
     
     expect(result).toEqual({
       temperature: 2,
@@ -21,23 +21,23 @@ describe('averager', () => {
   });
 
   it('calculate average for 2 numbers', () => {
-    const averager = new FixedDataSet(2);
+    const rra = new RoundRobinArchive(2);
     
-    averager.put({
+    rra.put({
       temperature: 2,
       humidity: 2,
       light: 2,
       radiation: 2
     });
     
-    averager.put({
+    rra.put({
       temperature: 4,
       humidity: 4,
       light: 4,
       radiation: 4
     });
     
-    const result = averager.average();
+    const result = rra.average();
     
     expect(result).toEqual({
       temperature: 3,
@@ -48,30 +48,30 @@ describe('averager', () => {
   });
 
   it('calculate rolling average', () => {
-    const averager = new FixedDataSet(2);
+    const rra = new RoundRobinArchive(2);
     
-    averager.put({
+    rra.put({
       temperature: 2,
       humidity: 2,
       light: 2,
       radiation: 2
     });
 
-    averager.put({
+    rra.put({
       temperature: 4,
       humidity: 4,
       light: 4,
       radiation: 4
     });
 
-    averager.put({
+    rra.put({
       temperature: 4,
       humidity: 4,
       light: 4,
       radiation: 4
     });
     
-    const result = averager.average();
+    const result = rra.average();
 
     expect(result).toEqual({
       temperature: 4,
