@@ -6,7 +6,12 @@ const updateInterval = 500;
 
 const createRealTimeChart = (id) => {
   const logScale = d3.scale.log().domain([1, 900]).range([0, 600]).clamp(true).nice();
-  const lines = Object.keys(COLORS).map(type => ({name: type, color: COLORS[type], scale: logScale}))
+  const lines = Object.keys(COLORS).map(type => ({
+    name: type,
+    color: COLORS[type],
+    strokeWidth: 3,
+    scale: logScale
+  }));
 
   const chart = new Rickshaw.Graph({
     element: document.querySelector(`#${id}`),
