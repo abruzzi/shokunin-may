@@ -1,0 +1,13 @@
+.summary-panel {
+  position: absolute;
+  width: 300px;
+  bottom: 10px;
+  left: 10px;
+  z-index: 1000;
+  background-color: transparent;
+}
+
+.card {
+  padding: 24px;
+  background-color: transparent;
+}

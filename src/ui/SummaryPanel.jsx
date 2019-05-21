@@ -1,13 +1,15 @@
 import React from 'react';
-import {createRealTimeChart} from "../utils/chart";
 import ChartSection from "./ChartSection";
+import {createRealTimeChart} from "../utils/chart";
 import {Card} from "antd";
 
+import './SummaryPanel.css';
+
 const SummaryPanel = ({summary}) => (
-  <div>
-    <Card title={summary.data.displayName} bordered>
-      <ChartSection createRealTimeChart={createRealTimeChart} group={summary.name} {...summary.rra.average()} />
-    </Card>
+  <div className='summary-panel'>
+    <div className="card">
+      <ChartSection createRealTimeChart={createRealTimeChart} group={`total-${summary.name}`} {...summary.rra.average()} />
+    </div>
   </div>);
 
 export default SummaryPanel;
