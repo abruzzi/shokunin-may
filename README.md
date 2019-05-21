@@ -1,4 +1,6 @@
-# Shokunin May
+# Shokunin May - Real-Time Sensor Data Visualization
+
+[![Build Status](https://travis-ci.org/abruzzi/shokunin-may.svg?branch=master)](https://travis-ci.org/abruzzi/shokunin-may)
 
 Install all the dependencies
 
