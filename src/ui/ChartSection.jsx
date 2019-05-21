@@ -12,7 +12,6 @@ const figure = (type, value) => {
     <div
       key={type}
       className={`figure ${type}`}
-      style={{textAlign: 'center'}}
       title={type}
     >
       <div>{SENSORS_ICON_MAP[type]}</div>
