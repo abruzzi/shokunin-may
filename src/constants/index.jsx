@@ -17,7 +17,7 @@ export const COLORS = {
 
 export const MARKER_COLOR = "#55AD44";
 export const MARKER_RADIUS = 8;
-export const MAP_TILE_SERVICE = "http://tile.stamen.com/toner/{z}/{x}/{y}.png";
+export const MAP_TILE_SERVICE = "http://tile.stamen.com/toner/{z}/{x}/{y}@2x.png";
 
 export const SENSORS_ICON_MAP = {
   Temperature: <Icon type="dashboard" style={{color: COLORS[SENSOR_TYPES.Temperature]}} />,

@@ -8,3 +8,8 @@
    right: 20px;
    z-Index: 1000;
  }
+
+.view-detail-button button {
+  border-color: #686D78;
+  color: #686D78;
+}
