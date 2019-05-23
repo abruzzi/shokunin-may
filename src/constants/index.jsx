@@ -15,7 +15,7 @@ export const COLORS = {
   Radiation: 'rgba(255, 111, 89, 1)'
 };
 
-export const MARKER_COLOR = "#E4347B";
+export const MARKER_COLOR = "#55AD44";
 export const MARKER_RADIUS = 8;
 export const MAP_TILE_SERVICE = "http://tile.stamen.com/toner/{z}/{x}/{y}.png";
 
