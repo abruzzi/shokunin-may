@@ -13,7 +13,7 @@ const BackgroundMap = ({groups = {}}) => (
     {
       Object.values(groups).filter(g => g.data.location).map(value => {
         const position = [value.data.location.latitude, value.data.location.longitude];
-        return (<CircleMarker key={value.name} center={position} color={MARKER_COLOR} fillColor={MARKER_COLOR} radius={MARKER_RADIUS}>
+        return (<CircleMarker key={value.name} center={position} color={MARKER_COLOR} fillColor={MARKER_COLOR} radius={MARKER_RADIUS} stroke={false} fillOpacity="0.5">
           <Popup>
             <Card title={value.data.displayName} bordered={false}>
               <ChartSection createRealTimeChart={createRealTimeChart} group={`m-${value.name}`} {...value.rra.average()} />

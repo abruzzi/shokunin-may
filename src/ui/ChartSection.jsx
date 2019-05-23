@@ -7,17 +7,16 @@ import './ChartSection.css';
 
 const format = (figure) => isNaN(Number(figure)) ? '-' : Number(figure).toFixed(2);
 
-const figure = (type, value) => {
-  return (
-    <div
-      key={type}
-      className={`figure ${type}`}
-      title={type}
-    >
-      <div>{SENSORS_ICON_MAP[type]}</div>
-      <div>{format(value)}</div>
-    </div>)
-};
+const figure = (type, value) => (
+  <div
+    key={type}
+    className={`figure ${type}`}
+    title={type}
+  >
+    <div>{SENSORS_ICON_MAP[type]}</div>
+    <div>{format(value)}</div>
+  </div>
+);
 
 class ChartSection extends React.Component {
   constructor(props) {
