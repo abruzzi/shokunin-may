@@ -18,7 +18,8 @@ export const COLORS = {
 export const MARKER_COLOR = "#C63F32";
 export const MARKER_RADIUS = 8;
 // export const MAP_TILE_SERVICE = "http://tile.stamen.com/toner/{z}/{x}/{y}@2x.png";
-export const MAP_TILE_SERVICE = "https://api.mapbox.com/styles/v1/mapbox/cj5l80zrp29942rmtg0zctjto/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoianVudGFvIiwiYSI6ImNqdzIwNjZmeDBybjgzenFrNG95OGNnejgifQ.sFyDPo2-yPZZJbZdmFX7QA";
+const MAP_BOX_TOKEN = 'pk.eyJ1IjoianVudGFvIiwiYSI6ImNqdzIwNjZmeDBybjgzenFrNG95OGNnejgifQ.sFyDPo2-yPZZJbZdmFX7QA';
+export const MAP_TILE_SERVICE = `https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token=${MAP_BOX_TOKEN}`;
 
 export const SENSORS_ICON_MAP = {
   Temperature: <Icon type="dashboard" style={{color: COLORS[SENSOR_TYPES.Temperature]}} />,

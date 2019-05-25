@@ -13,3 +13,19 @@
   border-color: #686D78;
   color: #686D78;
 }
+
+div.ant-drawer-content {
+  background-color: transparent;
+}
+
+div.ant-card {
+  background-color: transparent;
+}
+
+div.leaflet-popup-content-wrapper, div.leaflet-popup-tip {
+  background-color: transparent;
+}
+
+div.ant-card-head-title {
+  color: #ECECEC;
+}
