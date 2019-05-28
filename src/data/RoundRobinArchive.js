@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import {SENSOR_TYPES} from '../constants';
+import {SENSOR_TYPES} from '../constants/index';
 
 const fields = _.keys(SENSOR_TYPES).map(f => f.toLowerCase());
 

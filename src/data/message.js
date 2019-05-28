@@ -1,8 +1,9 @@
+import _ from 'lodash';
 import RoundRobinArchive from "./RoundRobinArchive";
 import {parse} from "./parser";
-import {ROLLING_WINDOW_SIZE} from "../constants";
+import {ROLLING_WINDOW_SIZE} from "../constants/index";
 
-const allGroups = [...Array(11).keys()].reduce((previous, current) => ({
+const groups = _.range(0, 11).reduce((previous, current) => ({
   ...previous,
   [`group_${current}`]: {
     name: `group_${current}`,
@@ -12,7 +13,7 @@ const allGroups = [...Array(11).keys()].reduce((previous, current) => ({
 }), {});
 
 const groupMap = {
-  ...allGroups,
+  ...groups,
   group_total: {
     name: 'group_total',
     rra: new RoundRobinArchive(ROLLING_WINDOW_SIZE),

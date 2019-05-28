@@ -5,7 +5,7 @@ import BackgroundMap from "./BackgroundMap";
 import Sidebar from "./Sidebar";
 import SummaryPanel from './SummaryPanel'
 
-import {convertRawDataForRendering} from "../utils/message";
+import {convertRawDataForRendering} from "../data/message";
 
 import {BATCH_FETCH, CHANNEL} from "../constants";
 import './AppContainer.css';

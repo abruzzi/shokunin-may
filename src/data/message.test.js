@@ -1,5 +1,5 @@
 import {convertRawDataForRendering} from "./message";
-import {ROLLING_WINDOW_SIZE} from "../constants";
+import {ROLLING_WINDOW_SIZE} from "../constants/index";
 
 describe('convert data', () => {
   const raw = [{
