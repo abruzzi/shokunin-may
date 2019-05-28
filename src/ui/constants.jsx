@@ -17,19 +17,10 @@ const MAP_BOX_TOKEN =
 export const MAP_TILE_SERVICE = `https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token=${MAP_BOX_TOKEN}`;
 
 export const SENSORS_ICON_MAP = {
-  Temperature: (
-    <Icon
-      type="dashboard"
-      style={{ color: COLORS["Temperature"] }}
-    />
-  ),
-  Humidity: (
-    <Icon type="cloud" style={{ color: COLORS["Humidity"] }} />
-  ),
+  Temperature: <Icon type="dashboard" style={{ color: COLORS["Temperature"] }} />,
+  Humidity: <Icon type="cloud" style={{ color: COLORS["Humidity"] }} />,
   Light: <Icon type="bulb" style={{ color: COLORS["Light"] }} />,
-  Radiation: (
-    <Icon type="alert" style={{ color: COLORS["Radiation"] }} />
-  )
+  Radiation: <Icon type="alert" style={{ color: COLORS["Radiation"] }} />
 };
 
 export const CHANNEL = "pubnub-sensor-network";
