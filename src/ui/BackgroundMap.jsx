@@ -8,7 +8,8 @@ import {
   CENTER,
   MARKER_COLOR,
   MARKER_RADIUS,
-  MAP_TILE_SERVICE, MARKER_OPACITY
+  MAP_TILE_SERVICE,
+  MARKER_OPACITY
 } from "./constants";
 
 import { createRealTimeChart } from "../utils/chart";

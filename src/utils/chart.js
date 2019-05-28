@@ -4,10 +4,12 @@ import Rickshaw from "rickshaw";
 import {
   CHART_HEIGHT,
   CHART_MAX,
-  CHART_MIN, CHART_RENDERER,
+  CHART_MIN,
+  CHART_RENDERER,
   CHART_STROKE_WIDTH,
   CHART_WIDTH,
-  COLORS, MAX_DATA_POINTS,
+  COLORS,
+  MAX_DATA_POINTS,
   UPDATE_INTERVAL
 } from "./constants";
 

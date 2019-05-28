@@ -2,7 +2,7 @@ import { parse, convertRawDataForRendering } from "./parser";
 import { ROLLING_WINDOW_SIZE } from "./constants";
 
 describe("parser", () => {
-  describe('parsing', () => {
+  describe("parsing", () => {
     it("group dat by sensor-id", () => {
       const data = {
         ambient_temperature: "23.22",
@@ -46,7 +46,7 @@ describe("parser", () => {
         })
       );
     });
-  })
+  });
 
   describe("convert data", () => {
     const raw = [
