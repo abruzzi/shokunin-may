@@ -1,21 +1,21 @@
-import React from 'react';
+import React from "react";
 import BackgroundMap from "./BackgroundMap";
-import {Map, CircleMarker, TileLayer} from "react-leaflet";
-import {shallow} from "enzyme";
+import { Map, CircleMarker, TileLayer } from "react-leaflet";
+import { shallow } from "enzyme";
 
-describe('background map', () => {
-  it('renders background layer', () => {
+describe("background map", () => {
+  it("renders background layer", () => {
     const props = {
       groups: {}
     };
 
-    const wrapper = shallow(<BackgroundMap {...props}/>);
+    const wrapper = shallow(<BackgroundMap {...props} />);
     expect(wrapper.find(Map).exists()).toBe(true);
     expect(wrapper.find(TileLayer).exists()).toBe(true);
     expect(wrapper.find(CircleMarker).exists()).toBe(false);
   });
 
-  describe('popup', () => {
+  describe("popup", () => {
     const sensorReadings = {
       temperature: 1,
       humidity: 2,
@@ -25,15 +25,15 @@ describe('background map', () => {
 
     const props = {
       groups: {
-        'G0': {
+        G0: {
           data: {
             location: {
               latitude: -12.23,
               longitude: 130.45
             },
-            displayName: 'CBD Melbourne VIC 3000'
+            displayName: "CBD Melbourne VIC 3000"
           },
-          name: 'G0',
+          name: "G0",
           rra: {
             average: jest.fn().mockImplementation(() => sensorReadings)
           }
@@ -41,22 +41,25 @@ describe('background map', () => {
       }
     };
 
-    it('renders circle marker', () => {
-      const wrapper = shallow(<BackgroundMap {...props}/>);
+    it("renders circle marker", () => {
+      const wrapper = shallow(<BackgroundMap {...props} />);
 
       expect(wrapper.find(CircleMarker).exists()).toEqual(true);
-      expect(wrapper.find(CircleMarker).prop('center')).toEqual([-12.23, 130.45]);
+      expect(wrapper.find(CircleMarker).prop("center")).toEqual([
+        -12.23,
+        130.45
+      ]);
     });
 
-    it('renders popup with panel', () => {
-      const wrapper = shallow(<BackgroundMap {...props}/>);
+    it("renders popup with panel", () => {
+      const wrapper = shallow(<BackgroundMap {...props} />);
 
-      expect(wrapper.find('ChartSection').exists()).toEqual(true);
-      expect(wrapper.find('ChartSection').prop('group')).toEqual('m-G0');
+      expect(wrapper.find("ChartSection").exists()).toEqual(true);
+      expect(wrapper.find("ChartSection").prop("group")).toEqual("m-G0");
 
-      expect(wrapper.find('ChartSection').props()).toEqual(
-        expect.objectContaining(sensorReadings));
-    })
-  })
-
-})
+      expect(wrapper.find("ChartSection").props()).toEqual(
+        expect.objectContaining(sensorReadings)
+      );
+    });
+  });
+});

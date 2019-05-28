@@ -8,7 +8,7 @@
     "build": "parcel build index.html",
     "now-build": "parcel build index.html --no-minify",
     "test": "jest src/",
-    "prettier": "prettier --write --no-config"
+    "prettier": "prettier --write --no-config src/**/*.{js,jsx}"
   },
   "keywords": [],
   "author": "",

@@ -1,5 +1,5 @@
-import _ from 'lodash';
-import {SENSOR_TYPES} from '../constants/index';
+import _ from "lodash";
+import { SENSOR_TYPES } from "../constants/index";
 
 const fields = _.keys(SENSOR_TYPES).map(f => f.toLowerCase());
 
@@ -9,18 +9,21 @@ class RoundRobinArchive {
     this.data = [];
   }
 
-  put (value) {
-    if(this.data.length === this.size) {
+  put(value) {
+    if (this.data.length === this.size) {
       this.data.shift();
     }
-    this.data.push(value)
-  } 
+    this.data.push(value);
+  }
 
-  average () {
-    return fields.reduce((previous, current) => ({
-      ...previous,
-      [current]: _.sumBy(this.data, current) / this.data.length
-    }), {temperature: 0, humidity: 0, light: 0, radiation: 0});
+  average() {
+    return fields.reduce(
+      (previous, current) => ({
+        ...previous,
+        [current]: _.sumBy(this.data, current) / this.data.length
+      }),
+      { temperature: 0, humidity: 0, light: 0, radiation: 0 }
+    );
   }
 }
 

@@ -1,20 +1,20 @@
-import React from 'react';
-import {shallow} from "enzyme/build";
+import React from "react";
+import { shallow } from "enzyme/build";
 
 import Sidebar from "./Sidebar";
 
-describe('Sidebar', () => {
-  it('renders nothing when no sensor information found', () => {
+describe("Sidebar", () => {
+  it("renders nothing when no sensor information found", () => {
     const props = {
       groups: {}
-    }
+    };
 
     const wrapper = shallow(<Sidebar {...props} />);
 
-    expect(wrapper.find('ChartSection').exists()).toEqual(false);
+    expect(wrapper.find("ChartSection").exists()).toEqual(false);
   });
 
-  it('renders panels for groups', () => {
+  it("renders panels for groups", () => {
     const sensorReadings = {
       temperature: 1,
       humidity: 2,
@@ -24,15 +24,15 @@ describe('Sidebar', () => {
 
     const props = {
       groups: {
-        'G0': {
+        G0: {
           data: {
             location: {
               latitude: -12.23,
               longitude: 130.45
             },
-            displayName: 'CBD Melbourne VIC 3000'
+            displayName: "CBD Melbourne VIC 3000"
           },
-          name: 'G0',
+          name: "G0",
           rra: {
             average: jest.fn().mockImplementation(() => sensorReadings)
           }
@@ -42,10 +42,11 @@ describe('Sidebar', () => {
 
     const wrapper = shallow(<Sidebar {...props} />);
 
-    expect(wrapper.find('ChartSection').exists()).toEqual(true);
-    expect(wrapper.find('ChartSection').prop('group')).toEqual('G0');
+    expect(wrapper.find("ChartSection").exists()).toEqual(true);
+    expect(wrapper.find("ChartSection").prop("group")).toEqual("G0");
 
-    expect(wrapper.find('ChartSection').props()).toEqual(
-      expect.objectContaining(sensorReadings));
+    expect(wrapper.find("ChartSection").props()).toEqual(
+      expect.objectContaining(sensorReadings)
+    );
   });
 });

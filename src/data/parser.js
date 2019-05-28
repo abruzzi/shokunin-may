@@ -1,15 +1,17 @@
-import config from './sensor-group-location.json';
+import config from "./sensor-group-location.json";
 
-const parse = (data) => {
-  const match = config.find(x => new RegExp(x.sensor_uuid_starts_with).test(data.sensor_uuid));
-  
+const parse = data => {
+  const match = config.find(x =>
+    new RegExp(x.sensor_uuid_starts_with).test(data.sensor_uuid)
+  );
+
   return {
     groupName: match.group_name,
-    displayName: match.display_name || '',
+    displayName: match.display_name || "",
     timestamp: data.timestamp,
     location: {
       latitude: match.latitude,
-      longitude: match.longitude,
+      longitude: match.longitude
     },
     readings: {
       temperature: Number(data.ambient_temperature),
@@ -20,4 +22,4 @@ const parse = (data) => {
   };
 };
 
-export {parse};
+export { parse };

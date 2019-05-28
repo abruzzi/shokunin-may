@@ -1,7 +1,7 @@
-import RoundRobinArchive from './RoundRobinArchive';
+import RoundRobinArchive from "./RoundRobinArchive";
 
-describe('RoundRobinArchive', () => {
-  it('calculate average for 1 reading', () => {
+describe("RoundRobinArchive", () => {
+  it("calculate average for 1 reading", () => {
     const rra = new RoundRobinArchive(2);
     rra.put({
       temperature: 2,
@@ -11,7 +11,7 @@ describe('RoundRobinArchive', () => {
     });
 
     const result = rra.average();
-    
+
     expect(result).toEqual({
       temperature: 2,
       humidity: 2,
@@ -20,25 +20,25 @@ describe('RoundRobinArchive', () => {
     });
   });
 
-  it('calculate average for 2 numbers', () => {
+  it("calculate average for 2 numbers", () => {
     const rra = new RoundRobinArchive(2);
-    
+
     rra.put({
       temperature: 2,
       humidity: 2,
       light: 2,
       radiation: 2
     });
-    
+
     rra.put({
       temperature: 4,
       humidity: 4,
       light: 4,
       radiation: 4
     });
-    
+
     const result = rra.average();
-    
+
     expect(result).toEqual({
       temperature: 3,
       humidity: 3,
@@ -47,9 +47,9 @@ describe('RoundRobinArchive', () => {
     });
   });
 
-  it('calculate rolling average', () => {
+  it("calculate rolling average", () => {
     const rra = new RoundRobinArchive(2);
-    
+
     rra.put({
       temperature: 2,
       humidity: 2,
@@ -70,7 +70,7 @@ describe('RoundRobinArchive', () => {
       light: 4,
       radiation: 4
     });
-    
+
     const result = rra.average();
 
     expect(result).toEqual({
@@ -80,4 +80,4 @@ describe('RoundRobinArchive', () => {
       radiation: 4
     });
   });
-})
+});

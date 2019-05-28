@@ -1,15 +1,20 @@
-import React from 'react';
+import React from "react";
 import ChartSection from "./ChartSection";
-import {createRealTimeChart} from "../utils/chart";
-import {Card} from "antd";
+import { createRealTimeChart } from "../utils/chart";
+import { Card } from "antd";
 
-import './SummaryPanel.css';
+import "./SummaryPanel.css";
 
-const SummaryPanel = ({summary}) => (
-  <div className='summary-panel'>
+const SummaryPanel = ({ summary }) => (
+  <div className="summary-panel">
     <div className="card">
-      <ChartSection createRealTimeChart={createRealTimeChart} group={`total-${summary.name}`} {...summary.rra.average()} />
+      <ChartSection
+        createRealTimeChart={createRealTimeChart}
+        group={`total-${summary.name}`}
+        {...summary.rra.average()}
+      />
     </div>
-  </div>);
+  </div>
+);
 
 export default SummaryPanel;

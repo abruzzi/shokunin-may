@@ -1,11 +1,16 @@
-import d3 from 'd3';
+import d3 from "d3";
 import Rickshaw from "rickshaw";
-import {COLORS} from "../constants";
+import { COLORS } from "../constants";
 
 const updateInterval = 500;
 
-const createRealTimeChart = (id) => {
-  const logScale = d3.scale.log().domain([1, 900]).range([0, 600]).clamp(true).nice();
+const createRealTimeChart = id => {
+  const logScale = d3.scale
+    .log()
+    .domain([1, 900])
+    .range([0, 600])
+    .clamp(true)
+    .nice();
   const lines = Object.keys(COLORS).map(type => ({
     name: type,
     color: COLORS[type],
@@ -20,14 +25,10 @@ const createRealTimeChart = (id) => {
     renderer: "line",
     min: 1,
     max: 900,
-    series: new Rickshaw.Series.FixedDuration(
-      lines,
-      undefined,
-      {
-        timeInterval: updateInterval,
-        maxDataPoints: 100
-      }
-    )
+    series: new Rickshaw.Series.FixedDuration(lines, undefined, {
+      timeInterval: updateInterval,
+      maxDataPoints: 100
+    })
   });
 
   new Rickshaw.Graph.HoverDetail({
@@ -39,5 +40,4 @@ const createRealTimeChart = (id) => {
   return chart;
 };
 
-
-export {createRealTimeChart};
+export { createRealTimeChart };
