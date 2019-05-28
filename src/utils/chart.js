@@ -1,34 +1,41 @@
 import d3 from "d3";
 import Rickshaw from "rickshaw";
 
-import { COLORS } from "./constants";
-
-const updateInterval = 500;
+import {
+  CHART_HEIGHT,
+  CHART_MAX,
+  CHART_MIN, CHART_RENDERER,
+  CHART_STROKE_WIDTH,
+  CHART_WIDTH,
+  COLORS, MAX_DATA_POINTS,
+  UPDATE_INTERVAL
+} from "./constants";
 
 const createRealTimeChart = id => {
   const logScale = d3.scale
     .log()
-    .domain([1, 900])
+    .domain([CHART_MIN, CHART_MAX])
     .range([0, 600])
     .clamp(true)
     .nice();
+
   const lines = Object.keys(COLORS).map(type => ({
     name: type,
     color: COLORS[type],
-    strokeWidth: 3,
+    strokeWidth: CHART_STROKE_WIDTH,
     scale: logScale
   }));
 
   const chart = new Rickshaw.Graph({
     element: document.querySelector(`#${id}`),
-    width: 240,
-    height: 120,
-    renderer: "line",
-    min: 1,
-    max: 900,
+    width: CHART_WIDTH,
+    height: CHART_HEIGHT,
+    renderer: CHART_RENDERER,
+    min: CHART_MIN,
+    max: CHART_MAX,
     series: new Rickshaw.Series.FixedDuration(lines, undefined, {
-      timeInterval: updateInterval,
-      maxDataPoints: 100
+      timeInterval: UPDATE_INTERVAL,
+      maxDataPoints: MAX_DATA_POINTS
     })
   });
 
