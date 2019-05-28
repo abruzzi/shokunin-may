@@ -1,5 +1,5 @@
 import { parse, convertRawDataForRendering } from "./parser";
-import { ROLLING_WINDOW_SIZE } from "../constants";
+import { ROLLING_WINDOW_SIZE } from "./constants";
 
 describe("parser", () => {
   describe('parsing', () => {

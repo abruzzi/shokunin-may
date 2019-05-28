@@ -1,6 +1,7 @@
 import d3 from "d3";
 import Rickshaw from "rickshaw";
-import { COLORS } from "../constants";
+
+import { COLORS } from "./constants";
 
 const updateInterval = 500;
 

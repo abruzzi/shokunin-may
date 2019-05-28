@@ -1,7 +1,7 @@
 import _ from "lodash";
-import { SENSOR_TYPES } from "../constants/index";
+import { SENSOR_TYPES } from "./constants";
 
-const fields = _.keys(SENSOR_TYPES).map(f => f.toLowerCase());
+const fields = SENSOR_TYPES.map(f => f.toLowerCase());
 
 class RoundRobinArchive {
   constructor(size = 1) {

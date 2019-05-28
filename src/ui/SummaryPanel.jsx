@@ -1,7 +1,6 @@
 import React from "react";
 import ChartSection from "./ChartSection";
 import { createRealTimeChart } from "../utils/chart";
-import { Card } from "antd";
 
 import "./SummaryPanel.css";
 

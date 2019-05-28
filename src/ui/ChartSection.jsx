@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row } from "antd";
 
-import { SENSORS_ICON_MAP } from "../constants";
+import { SENSORS_ICON_MAP } from "./constants";
 
 import "./ChartSection.css";
 

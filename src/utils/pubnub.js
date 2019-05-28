@@ -1,5 +1,5 @@
 import PubNubReact from "pubnub-react";
-import { SUB_KEY } from "../constants";
+import { SUB_KEY } from "./constants";
 
 const initPubNub = host => {
   const pubnub = new PubNubReact({ subscribeKey: SUB_KEY });

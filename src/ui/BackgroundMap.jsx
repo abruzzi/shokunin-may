@@ -9,7 +9,8 @@ import {
   MARKER_COLOR,
   MARKER_RADIUS,
   MAP_TILE_SERVICE, MARKER_OPACITY
-} from "../constants";
+} from "./constants";
+
 import { createRealTimeChart } from "../utils/chart";
 
 const BackgroundMap = ({ groups = {} }) => (

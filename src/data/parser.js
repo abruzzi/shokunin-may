@@ -3,7 +3,7 @@ import _ from "lodash";
 import config from "./sensor-group-location.json";
 import RoundRobinArchive from "./RoundRobinArchive";
 
-import { ROLLING_WINDOW_SIZE } from "../constants/index";
+import { ROLLING_WINDOW_SIZE } from "./constants";
 
 const parse = data => {
   const match = config.find(x =>
