@@ -1,6 +1,8 @@
 import { Icon } from "antd";
 import React from "react";
 
+export const SENSOR_TYPES = ["Temperature", "Humidity", "Light", "Radiation"];
+
 export const COLORS = {
   Temperature: "rgba(164, 147, 191, 1)",
   Humidity: "rgba(234, 196, 53, 1)",
@@ -8,9 +10,9 @@ export const COLORS = {
   Radiation: "rgba(255, 111, 89, 1)"
 };
 
-export const MARKER_COLOR = "#C63F32";
+export const MARKER_COLOR = "#6AB14B";
 export const MARKER_RADIUS = 8;
-export const MARKER_OPACITY = 0.5;
+export const MARKER_OPACITY = 0.6;
 
 const MAP_BOX_TOKEN =
   "pk.eyJ1IjoianVudGFvIiwiYSI6ImNqdzIwNjZmeDBybjgzenFrNG95OGNnejgifQ.sFyDPo2-yPZZJbZdmFX7QA";

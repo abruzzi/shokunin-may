@@ -11,7 +11,7 @@ describe("ChartSection", () => {
       light: 3.2,
       radiation: 4.2,
       group: "G8",
-      createRealTimeChart: jest.fn().mockImplementation(() => {})
+      createChart: jest.fn().mockImplementation(() => {})
     };
 
     const wrapper = shallow(<ChartSection {...props} />);
@@ -20,14 +20,14 @@ describe("ChartSection", () => {
     expect(wrapper.find(".Humidity").text()).toContain("2.22");
     expect(wrapper.find(".Light").text()).toContain("3.20");
     expect(wrapper.find(".Radiation").text()).toContain("4.20");
-    expect(props.createRealTimeChart).toHaveBeenCalledWith(props.group);
+    expect(props.createChart).toHaveBeenCalledWith(props.group);
   });
 
   it("error handling", () => {
     const props = {
       temperature: NaN,
       group: "G8",
-      createRealTimeChart: jest.fn().mockImplementation(() => {})
+      createChart: jest.fn().mockImplementation(() => {})
     };
 
     const wrapper = shallow(<ChartSection {...props} />);

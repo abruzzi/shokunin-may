@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row } from "antd";
 
-import { SENSORS_ICON_MAP } from "./constants";
+import { SENSORS_ICON_MAP, SENSOR_TYPES } from "./constants";
 
 import "./ChartSection.css";
 
@@ -23,7 +23,7 @@ class ChartSection extends React.Component {
 
   componentDidMount() {
     const { group } = this.props;
-    this.chart = this.props.createRealTimeChart(group);
+    this.chart = this.props.createChart(group);
   }
 
   render() {
@@ -43,7 +43,7 @@ class ChartSection extends React.Component {
     return (
       <div>
         <Row>
-          {Object.keys(SENSORS_ICON_MAP).map(label => {
+          {SENSOR_TYPES.map(label => {
             return (
               <Col span={6} key={label}>
                 {figure(label, props[label.toLowerCase()])}

@@ -14,7 +14,7 @@ const Sidebar = ({ groups = {} }) => (
           <Col span={24} key={value.name} className="column">
             <Card title={value.data.displayName} bordered>
               <ChartSection
-                createRealTimeChart={createRealTimeChart}
+                createChart={createRealTimeChart}
                 group={value.name}
                 {...value.rra.average()}
               />

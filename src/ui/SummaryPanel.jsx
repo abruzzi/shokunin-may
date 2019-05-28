@@ -8,7 +8,7 @@ const SummaryPanel = ({ summary }) => (
   <div className="summary-panel">
     <div className="card">
       <ChartSection
-        createRealTimeChart={createRealTimeChart}
+        createChart={createRealTimeChart}
         group={`total-${summary.name}`}
         {...summary.rra.average()}
       />

@@ -36,7 +36,7 @@ const BackgroundMap = ({ groups = {} }) => (
             <Popup>
               <Card title={value.data.displayName} bordered={false}>
                 <ChartSection
-                  createRealTimeChart={createRealTimeChart}
+                  createChart={createRealTimeChart}
                   group={`marker-${value.name}`}
                   {...value.rra.average()}
                 />
