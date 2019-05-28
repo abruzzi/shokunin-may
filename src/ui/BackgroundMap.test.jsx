@@ -55,7 +55,7 @@ describe("background map", () => {
       const wrapper = shallow(<BackgroundMap {...props} />);
 
       expect(wrapper.find("ChartSection").exists()).toEqual(true);
-      expect(wrapper.find("ChartSection").prop("group")).toEqual("m-G0");
+      expect(wrapper.find("ChartSection").prop("group")).toEqual("marker-G0");
 
       expect(wrapper.find("ChartSection").props()).toEqual(
         expect.objectContaining(sensorReadings)

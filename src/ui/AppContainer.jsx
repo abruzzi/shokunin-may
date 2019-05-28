@@ -7,7 +7,7 @@ import SummaryPanel from "./SummaryPanel";
 
 import { convertRawDataForRendering } from "../data/message";
 
-import { BATCH_FETCH, CHANNEL } from "../constants";
+import { BATCH_FETCH, CHANNEL, DRAWER_WIDTH } from "../constants";
 import "./AppContainer.css";
 
 class AppContainer extends Component {
@@ -39,6 +39,7 @@ class AppContainer extends Component {
 
   render() {
     const messages = this.pubnub.getMessage(CHANNEL);
+
     if (messages.length === 0) return null;
 
     const groups = convertRawDataForRendering(messages);
@@ -55,7 +56,7 @@ class AppContainer extends Component {
 
         <Drawer
           visible={this.state.visible}
-          width={360}
+          width={DRAWER_WIDTH}
           closable={false}
           onClose={this.closeDrawer}
         >

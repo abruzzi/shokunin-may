@@ -17,6 +17,7 @@ export const COLORS = {
 
 export const MARKER_COLOR = "#C63F32";
 export const MARKER_RADIUS = 8;
+export const MARKER_OPACITY = 0.5;
 
 const MAP_BOX_TOKEN =
   "pk.eyJ1IjoianVudGFvIiwiYSI6ImNqdzIwNjZmeDBybjgzenFrNG95OGNnejgifQ.sFyDPo2-yPZZJbZdmFX7QA";
@@ -45,3 +46,5 @@ export const BATCH_FETCH = 20;
 export const CENTER = [-24.0, 132.0];
 
 export const ROLLING_WINDOW_SIZE = 10;
+
+export const DRAWER_WIDTH = 360;

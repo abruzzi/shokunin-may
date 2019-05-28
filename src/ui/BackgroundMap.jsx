@@ -8,7 +8,7 @@ import {
   CENTER,
   MARKER_COLOR,
   MARKER_RADIUS,
-  MAP_TILE_SERVICE
+  MAP_TILE_SERVICE, MARKER_OPACITY
 } from "../constants";
 import { createRealTimeChart } from "../utils/chart";
 
@@ -30,13 +30,13 @@ const BackgroundMap = ({ groups = {} }) => (
             fillColor={MARKER_COLOR}
             radius={MARKER_RADIUS}
             stroke={false}
-            fillOpacity="0.5"
+            fillOpacity={MARKER_OPACITY}
           >
             <Popup>
               <Card title={value.data.displayName} bordered={false}>
                 <ChartSection
                   createRealTimeChart={createRealTimeChart}
-                  group={`m-${value.name}`}
+                  group={`marker-${value.name}`}
                   {...value.rra.average()}
                 />
               </Card>
