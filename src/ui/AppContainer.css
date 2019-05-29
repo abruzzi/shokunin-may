@@ -29,3 +29,18 @@ div.leaflet-popup-content-wrapper, div.leaflet-popup-tip {
 div.ant-card-head-title {
   color: #ECECEC;
 }
+
+
+a.leaflet-control-zoom-in {
+  background: rgba(34,34,34,0.75);
+  color: #e8e8e8;
+}
+
+a.leaflet-control-zoom-out {
+  background: rgba(34,34,34,0.75);
+  color: #e8e8e8;
+}
+
+.leaflet-bar a, .leaflet-bar a:hover {
+  border-bottom: none;
+}

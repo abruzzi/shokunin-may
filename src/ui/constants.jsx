@@ -12,11 +12,11 @@ export const COLORS = {
 
 export const MARKER_COLOR = "#6AB14B";
 export const MARKER_RADIUS = 8;
-export const MARKER_OPACITY = 0.6;
+export const MARKER_OPACITY = 0.8;
 
 const MAP_BOX_TOKEN =
   "pk.eyJ1IjoianVudGFvIiwiYSI6ImNqdzIwNjZmeDBybjgzenFrNG95OGNnejgifQ.sFyDPo2-yPZZJbZdmFX7QA";
-export const MAP_TILE_SERVICE = `https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}?access_token=${MAP_BOX_TOKEN}`;
+export const MAP_TILE_SERVICE = `https://api.mapbox.com/styles/v1/mapbox/cj5l80zrp29942rmtg0zctjto/tiles/{z}/{x}/{y}?access_token=${MAP_BOX_TOKEN}`;
 
 export const SENSORS_ICON_MAP = {
   Temperature: (
