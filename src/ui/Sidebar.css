@@ -1,3 +1,20 @@
+.container {
+  position: absolute;
+  z-index: 1000;
+  width: 300px;
+  height: 100vh;
+  padding: 0 20px;
+  overflow: scroll;
+  right: 0;
+  top: 0;
+  box-shadow: -1px 0 10px 3px rgba(34,34,34,0.75);
+  background: rgba(34,34,34,0.75);
+}
+
+.wrapper{
+  position: relative;
+}
+
 .column {
   padding: 8px;
 }

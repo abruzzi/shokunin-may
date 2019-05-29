@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Button, Drawer } from "antd";
 
 import BackgroundMap from "./BackgroundMap";
 import Sidebar from "./Sidebar";
@@ -7,15 +6,11 @@ import SummaryPanel from "./SummaryPanel";
 
 import { convertRawDataForRendering } from "../data/parser";
 
-import { BATCH_FETCH, CHANNEL, DRAWER_WIDTH } from "./constants";
+import { BATCH_FETCH, CHANNEL } from "./constants";
 
 import "./AppContainer.css";
 
 class AppContainer extends Component {
-  state = {
-    visible: false
-  };
-
   constructor(props) {
     super(props);
     this.pubnub = props.initPubNub(this);
@@ -30,14 +25,6 @@ class AppContainer extends Component {
     this.pubnub.unsubscribe({ channels: [CHANNEL] });
   }
 
-  showDrawer = () => {
-    this.setState({ visible: true });
-  };
-
-  closeDrawer = () => {
-    this.setState({ visible: false });
-  };
-
   render() {
     const messages = this.pubnub.getMessage(CHANNEL);
 
@@ -47,23 +34,8 @@ class AppContainer extends Component {
 
     return (
       <div className="main-container">
-        <div className="view-detail-button">
-          <Button ghost onClick={() => this.showDrawer()}>
-            List View
-          </Button>
-        </div>
-
         <BackgroundMap groups={groups} />
-
-        <Drawer
-          visible={this.state.visible}
-          width={DRAWER_WIDTH}
-          closable={false}
-          onClose={this.closeDrawer}
-        >
-          <Sidebar groups={groups} />
-        </Drawer>
-
+        <Sidebar groups={groups} />
         <SummaryPanel summary={groups["group_total"]} />
       </div>
     );

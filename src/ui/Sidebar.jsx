@@ -6,23 +6,27 @@ import { createRealTimeChart } from "../utils/chart";
 import "./Sidebar.css";
 
 const Sidebar = ({ groups = {} }) => (
-  <Row gutter={16}>
-    {Object.values(groups)
-      .filter(g => g.data.location)
-      .map(value => {
-        return (
-          <Col span={24} key={value.name} className="column">
-            <Card title={value.data.displayName} bordered>
-              <ChartSection
-                createChart={createRealTimeChart}
-                group={value.name}
-                {...value.rra.average()}
-              />
-            </Card>
-          </Col>
-        );
-      })}
-  </Row>
+  <div className="container">
+    <div className="wrapper">
+      <Row gutter={16}>
+        {Object.values(groups)
+          .filter(g => g.data.location)
+          .map(value => {
+            return (
+              <Col span={24} key={value.name} className="column">
+                <Card title={value.data.displayName} bordered={false}>
+                  <ChartSection
+                    createChart={createRealTimeChart}
+                    group={value.name}
+                    {...value.rra.average()}
+                  />
+                </Card>
+              </Col>
+            );
+          })}
+      </Row>
+    </div>
+  </div>
 );
 
 export default Sidebar;
